@@ -1,7 +1,7 @@
 @extends('admin_dashboard')
 
 @section('admin')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
 
 <!-- Start Content-->
@@ -78,7 +78,9 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form>
+                        <form method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data">
+                            @csrf
+
                             <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal
                                 Info</h5>
                             <div class="row">
@@ -111,8 +113,8 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="photo" class="form-label">Profile Image</label>
-                                        <input type="file" name="photo" id="photo" class="form-control">
+                                        <label for="image" class="form-label">Profile Image</label>
+                                        <input type="file" name="photo" id="image" class="form-control">
                                     </div>
                                 </div> <!-- end col -->
 
@@ -120,7 +122,8 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="photo" class="form-label"></label>
-                                        <img src="{{ (!empty($adminData->photo)) ? url('upload/admin_image/' . $adminData->photo) : url('upload/noimage.png') }}"
+                                        <img id="showImage"
+                                            src="{{ (!empty($adminData->photo)) ? url('upload/admin_image/' . $adminData->photo) : url('upload/noimage.png') }}"
                                             class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
                                     </div>
                                 </div> <!-- end col -->
@@ -145,6 +148,19 @@
     <!-- end row-->
 
 </div> <!-- container -->
+
+
+<script>
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        })
+    })
+</script>
 
 
 

@@ -39,3 +39,4 @@ Route::get('/logout', [AdminController::class, 'adminLogoutPage'])->name('admin.
 
 // profil
 Route::get('/admin/profile', [AdminController::class, 'adminProfile'])->name('admin.profile');
+Route::post('/admin/profile/store', [AdminController::class, 'adminProfileStore'])->name('admin.profile.store');
