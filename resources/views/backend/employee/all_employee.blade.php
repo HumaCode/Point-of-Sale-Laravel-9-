@@ -24,11 +24,12 @@
             <div class="col-12">
                 <div class="page-title-box">
                     <div class="page-title-right">
-                        <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">{{ config('app.name') }}</a>
-                            </li>
-                            <li class="breadcrumb-item"><a href="#">All Employee</a></li>
-                        </ol>
+
+
+                        <a href="{{ route('add.employee') }}"
+                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
+                                class="mdi mdi-plus me-1"></i> Add Employee</a>
+
                     </div>
                     <h4 class="page-title"><i class="mdi mdi-file-table-box me-1"></i> All Employee</h4>
                 </div>
@@ -47,6 +48,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Image</th>
+                                    <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Salary</th>
@@ -56,15 +58,25 @@
 
 
                             <tbody>
+
+                                @foreach ($employee as $key => $item)
+
                                 <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                            </tbody>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>
+                                        <img src="{{ asset($item->image) }}" style="width: 50px; height: 40px;" alt="">
+                                    </td>
+                                    <td>{{ asset($item->name) }}</td>
+                                    <td>{{ asset($item->email) }}</td>
+                                    <td>{{ asset($item->phone) }}</td>
+                                    <td>{{ asset($item->salary) }}</td>
+                                    <td>
+                                        <a href="" class="btn btn-primary rounded-pill waves-effect waves-light"><i
+                                                class="mdi mdi-pencil me-1"></i> Edit</a>
+                                        <a href="" class="btn btn-danger rounded-pill waves-effect waves-light"><i
+                                                class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                    </td>
+                                </tr><i @endforeach </tbody>
                         </table>
 
                     </div> <!-- end card body-->
