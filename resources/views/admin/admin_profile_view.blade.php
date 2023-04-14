@@ -17,7 +17,7 @@
                         <li class="breadcrumb-item active">Admin Profile</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Profile</h4>
+                <h4 class="page-title"><i class="mdi mdi-account-circle me-1"></i> Profile</h4>
             </div>
         </div>
     </div>

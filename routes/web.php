@@ -40,3 +40,7 @@ Route::get('/logout', [AdminController::class, 'adminLogoutPage'])->name('admin.
 // profil
 Route::get('/admin/profile', [AdminController::class, 'adminProfile'])->name('admin.profile');
 Route::post('/admin/profile/store', [AdminController::class, 'adminProfileStore'])->name('admin.profile.store');
+
+// change password
+Route::get('/change/password', [AdminController::class, 'changePassword'])->name('change.password');
+Route::post('/update/password', [AdminController::class, 'updatePassword'])->name('update.password');
