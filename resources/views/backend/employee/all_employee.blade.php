@@ -52,7 +52,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Salary</th>
-                                    <th>Action</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
 
@@ -66,13 +66,13 @@
                                     <td>
                                         <img src="{{ asset($item->image) }}" style="width: 50px; height: 40px;" alt="">
                                     </td>
-                                    <td>{{ asset($item->name) }}</td>
-                                    <td>{{ asset($item->email) }}</td>
-                                    <td>{{ asset($item->phone) }}</td>
-                                    <td>{{ asset($item->salary) }}</td>
-                                    <td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->salary }}</td>
+                                    <td class="text-center">
                                         <a href="" class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-pencil me-1"></i> Edit</a>
+                                                class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
                                         <a href="" class="btn btn-danger rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
                                     </td>

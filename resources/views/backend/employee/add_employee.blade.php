@@ -30,7 +30,7 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('employee.store') }}" enctype="multipart/form-data">
                             @csrf
 
 
@@ -39,7 +39,7 @@
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Employee Name</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" id="name">
+                                            name="name" id="name" value="{{ old('name') }}">
                                         @error('name')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -49,7 +49,8 @@
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Employee Email</label>
                                         <input type="email" name="email"
-                                            class="form-control @error('email') is-invalid @enderror" id="email">
+                                            class="form-control @error('email') is-invalid @enderror" id="email"
+                                            value="{{ old('email') }}">
                                         @error('email')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -61,7 +62,8 @@
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Employee Phone</label>
                                         <input type="text" name="phone"
-                                            class="form-control  @error('phone') is-invalid @enderror" id="phone">
+                                            class="form-control  @error('phone') is-invalid @enderror" id="phone"
+                                            value="{{ old('phone') }}">
                                         @error('phone')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -72,7 +74,8 @@
                                     <div class="mb-3">
                                         <label for="address" class="form-label">Employee Address</label>
                                         <input type="text" name="address"
-                                            class="form-control  @error('address') is-invalid @enderror" id="address">
+                                            class="form-control  @error('address') is-invalid @enderror" id="address"
+                                            value="{{ old('address') }}">
                                         @error('address')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -101,7 +104,8 @@
                                     <div class="mb-3">
                                         <label for="salary" class="form-label">Employee Salary</label>
                                         <input type="text" name="salary"
-                                            class="form-control  @error('salary') is-invalid @enderror" id="salary">
+                                            class="form-control  @error('salary') is-invalid @enderror" id="salary"
+                                            value="{{ old('salary') }}">
                                         @error('salary')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -110,10 +114,11 @@
 
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="vocation" class="form-label">Employee Vocation</label>
-                                        <input type="text" name="vocation"
-                                            class="form-control  @error('vocation') is-invalid @enderror" id="vocation">
-                                        @error('vocation')
+                                        <label for="vacation" class="form-label">Employee Vacation</label>
+                                        <input type="text" name="vacation"
+                                            class="form-control  @error('vacation') is-invalid @enderror" id="vacation"
+                                            value="{{ old('vacation') }}">
+                                        @error('vacation')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -123,7 +128,8 @@
                                     <div class="mb-3">
                                         <label for="city" class="form-label">Employee City</label>
                                         <input type="text" name="city"
-                                            class="form-control  @error('city') is-invalid @enderror" id="city">
+                                            class="form-control  @error('city') is-invalid @enderror" id="city"
+                                            value="{{ old('city') }}">
                                         @error('city')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -135,8 +141,8 @@
 
                                 <div class="col-md-12">
                                     <div class="mb-3">
-                                        <label for="image" class="form-label">Profile Image</label>
-                                        <input type="file" name="photo" id="image" class="form-control">
+                                        <label for="image" class="form-label">Employee Image</label>
+                                        <input type="file" name="image" id="image" class="form-control">
                                     </div>
                                 </div> <!-- end col -->
 
