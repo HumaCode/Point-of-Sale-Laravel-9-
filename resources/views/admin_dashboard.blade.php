@@ -33,6 +33,8 @@ $adminData = App\Models\User::find($id);
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
+    @stack('css')
+
 </head>
 
 <!-- body start -->
@@ -115,6 +117,8 @@ $adminData = App\Models\User::find($id);
         }
         @endif 
     </script>
+
+    @stack('scripts')
 
 </body>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,12 @@ Route::middleware('auth')->group(function () {
     // change password
     Route::get('/change/password', [AdminController::class, 'changePassword'])->name('change.password');
     Route::post('/update/password', [AdminController::class, 'updatePassword'])->name('update.password');
+
+
+    // employee
+    Route::controller(EmployeeController::class)->group(function () {
+        Route::get('/all/employee', 'allEmployee')->name('all.employee');
+    });
 });
 
 require __DIR__ . '/auth.php';
