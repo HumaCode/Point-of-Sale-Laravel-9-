@@ -27,16 +27,22 @@ class EmployeeController extends Controller
 
     public function storeEmployee(Request $request)
     {
-        $validateData = $request->validate([
-            'name'          => 'required|max:200',
-            'email'         => 'required|unique:employees|max:200',
-            'phone'         => 'required|max:200',
-            'address'       => 'required|max:200',
-            'experience'    => 'required',
-            'salary'        => 'required|max:200',
-            'vacation'      => 'required|max:200',
-            'city'          => 'required|max:200',
-        ]);
+        $validateData = $request->validate(
+            [
+                'name'          => 'required|max:200',
+                'email'         => 'required|unique:employees|max:200',
+                'phone'         => 'required|max:200',
+                'address'       => 'required|max:200',
+                'experience'    => 'required',
+                'salary'        => 'required|max:200',
+                'vacation'      => 'required|max:200',
+                'city'          => 'required|max:200',
+                'image'         => 'required',
+            ],
+            [
+                'name.required' => 'This Employee Name Field  is Required',
+            ]
+        );
 
         $image      = $request->file('image');
         $name_gen   = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
