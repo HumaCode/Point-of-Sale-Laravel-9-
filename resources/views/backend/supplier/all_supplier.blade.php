@@ -26,7 +26,7 @@
                     <div class="page-title-right">
 
 
-                        <a href="{{ route('add.customer') }}"
+                        <a href="{{ route('add.supplier') }}"
                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                 class="mdi mdi-plus me-1"></i> Add Supplier</a>
 
