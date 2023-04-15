@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/employee/{id}', 'editEmployee')->name('edit.employee');
         Route::post('/update/employee', 'updateEmployee')->name('employee.update');
         Route::get('/delete/employee/{id}', 'deleteEmployee')->name('delete.employee');
+    });
+
+
+    // customer
+    Route::controller(CustomerController::class)->group(function () {
+        Route::get('/all/customer', 'allCustomer')->name('all.customer');
     });
 });
 
