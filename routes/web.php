@@ -56,6 +56,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/all/customer', 'allCustomer')->name('all.customer');
         Route::get('/add/customer', 'addCustomer')->name('add.customer');
         Route::post('/store/customer', 'storeCustomer')->name('customer.store');
+        Route::get('/edit/customer/{id}', 'editCustomer')->name('edit.customer');
+        Route::post('/update/customer', 'updateCustomer')->name('customer.update');
+        Route::get('/delete/customer/{id}', 'deleteCustomer')->name('delete.customer');
     });
 });
 

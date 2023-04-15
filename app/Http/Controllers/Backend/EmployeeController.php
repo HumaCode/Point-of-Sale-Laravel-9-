@@ -143,7 +143,7 @@ class EmployeeController extends Controller
             ]);
 
             $notification = array(
-                'message'       => 'Employee Inserted Successfull',
+                'message'       => 'Employee Updated Successfull',
                 'alert-type'    => 'success',
             );
         }
