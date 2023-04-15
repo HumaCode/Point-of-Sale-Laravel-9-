@@ -71,10 +71,10 @@
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('edit.customer', $item->id) }}"
+                                        <a href="{{ route('edit.supplier', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
-                                        <a href="{{ route('delete.customer', $item->id) }}"
+                                        <a href="{{ route('delete.supplier', $item->id) }}"
                                             class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
                                                 class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
                                     </td>
