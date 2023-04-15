@@ -54,6 +54,8 @@ Route::middleware('auth')->group(function () {
     // customer
     Route::controller(CustomerController::class)->group(function () {
         Route::get('/all/customer', 'allCustomer')->name('all.customer');
+        Route::get('/add/customer', 'addCustomer')->name('add.customer');
+        Route::post('/store/customer', 'storeCustomer')->name('customer.store');
     });
 });
 

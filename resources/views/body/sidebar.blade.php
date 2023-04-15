@@ -49,7 +49,7 @@
                                 <a href="{{ route('all.customer') }}">All Cutomer</a>
                             </li>
                             <li>
-                                <a href="crm-contacts.html">Add Cutomer</a>
+                                <a href="{{ route('add.customer') }}">Add Cutomer</a>
                             </li>
                         </ul>
                     </div>
