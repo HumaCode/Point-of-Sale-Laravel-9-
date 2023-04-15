@@ -93,6 +93,9 @@ $adminData = App\Models\User::find($id);
     <!-- App js-->
     <script src="{{ asset('backend') }}/assets/js/app.min.js"></script>
 
+    <!-- Tippy js-->
+    <script src="{{ asset('backend') }}/assets/libs/tippy.js/tippy.all.min.js"></script>
+
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>

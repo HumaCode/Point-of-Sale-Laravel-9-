@@ -70,16 +70,22 @@
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->type }}</td>
-                                    <td class="text-center">
+                                    <td class="text-center" id="tooltip-container">
                                         <a href="{{ route('edit.supplier', $item->id) }}"
-                                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
+                                            class="btn btn-primary rounded-pill waves-effect waves-light"
+                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Edit"><i class="fas fa-pen"></i> </a>
+                                        &nbsp;
                                         <a href="{{ route('detail.supplier', $item->id) }}"
-                                            class="btn btn-info rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-eye me-1"></i> Detail</a> &nbsp;
+                                            class="btn btn-info rounded-pill waves-effect waves-light"
+                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Detail"><i class="fas fa-eye"></i> </a>
+                                        &nbsp;
                                         <a href="{{ route('delete.supplier', $item->id) }}"
-                                            class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
-                                                class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                            class="btn btn-danger rounded-pill waves-effect waves-light"
+                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" id="delete" title="Delete"><i
+                                                class="fas fa-trash-alt"></i> </a>
                                     </td>
                                 </tr><i @endforeach </tbody>
                         </table>
