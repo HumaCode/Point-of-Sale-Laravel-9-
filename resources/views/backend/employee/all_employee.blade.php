@@ -71,7 +71,8 @@
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->salary }}</td>
                                     <td class="text-center">
-                                        <a href="" class="btn btn-primary rounded-pill waves-effect waves-light"><i
+                                        <a href="{{ route('edit.employee', $item->id) }}"
+                                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
                                         <a href="" class="btn btn-danger rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
