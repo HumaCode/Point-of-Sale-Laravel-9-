@@ -74,7 +74,8 @@
                                         <a href="{{ route('edit.employee', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
-                                        <a href="" class="btn btn-danger rounded-pill waves-effect waves-light"><i
+                                        <a href="{{ route('delete.employee', $item->id) }}"
+                                            class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
                                                 class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
                                     </td>
                                 </tr><i @endforeach </tbody>
@@ -92,6 +93,11 @@
 
 
 @push('scripts')
+
+{{-- sweetalert --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{ asset('backend') }}/assets/js/code.js"></script>
+
 <!-- third party js -->
 <script src="{{ asset('backend') }}/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="{{ asset('backend') }}/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>

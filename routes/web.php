@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/store/employee', 'storeEmployee')->name('employee.store');
         Route::get('/edit/employee/{id}', 'editEmployee')->name('edit.employee');
         Route::post('/update/employee', 'updateEmployee')->name('employee.update');
+        Route::get('/delete/employee/{id}', 'deleteEmployee')->name('delete.employee');
     });
 });
 

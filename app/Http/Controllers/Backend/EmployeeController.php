@@ -129,8 +129,6 @@ class EmployeeController extends Controller
                 'message'       => 'Employee Updated Successfull',
                 'alert-type'    => 'success',
             );
-
-            return redirect()->route('all.employee')->with($notification);
         } else {
             Employee::findOrFail($employe_id)->update([
                 'name'          => $request->name,
@@ -148,8 +146,23 @@ class EmployeeController extends Controller
                 'message'       => 'Employee Inserted Successfull',
                 'alert-type'    => 'success',
             );
-
-            return redirect()->route('all.employee')->with($notification);
         }
+        return redirect()->route('all.employee')->with($notification);
+    }
+
+    public function deleteEmployee($id)
+    {
+        $employe_img    = Employee::findOrFail($id);
+        $img            = $employe_img->image;
+        unlink($img);
+
+        Employee::findOrFail($id)->delete();
+
+        $notification = array(
+            'message'       => 'Employee Deleted Successfull',
+            'alert-type'    => 'success',
+        );
+
+        return redirect()->back()->with($notification);
     }
 }
