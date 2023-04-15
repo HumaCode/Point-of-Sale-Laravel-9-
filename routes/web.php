@@ -70,6 +70,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/store/supplier', 'storeSupplier')->name('supplier.store');
         Route::get('/edit/supplier/{id}', 'editSupplier')->name('edit.supplier');
         Route::post('/update/supplier', 'updateSupplier')->name('supplier.update');
+        Route::get('/detail/supplier/{id}', 'detailSupplier')->name('detail.supplier');
         Route::get('/delete/supplier/{id}', 'deleteSupplier')->name('delete.supplier');
     });
 });

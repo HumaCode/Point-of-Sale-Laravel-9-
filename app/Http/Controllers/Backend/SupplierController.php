@@ -165,6 +165,14 @@ class SupplierController extends Controller
         return redirect()->route('all.supplier')->with($notification);
     }
 
+    public function detailSupplier($id)
+    {
+        $supplier   = Supplier::findOrFail($id);
+        $title      = "Detail Supplier";
+
+        return view('backend.supplier.detail_supplier', compact('title', 'supplier'));
+    }
+
     public function deleteSupplier($id)
     {
         $supplier_img   = Supplier::findOrFail($id);
