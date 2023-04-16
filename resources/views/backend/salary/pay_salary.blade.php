@@ -101,7 +101,7 @@ return number_format($angka, 0, ',', '.');
                                         <strong class="text-white">Rp. {{ format_uang(round($amount)) }}</strong>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('edit.advance.salary', $item->id) }}"
+                                        <a href="{{ route('pay.now.salary', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-cash-usd-outline me-1"></i> Pay Now</a> &nbsp;
 
