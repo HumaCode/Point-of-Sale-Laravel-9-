@@ -87,6 +87,9 @@
                             <li>
                                 <a href="{{ route('all.advance.salary') }}">All Advance Salary</a>
                             </li>
+                            <li>
+                                <a href="{{ route('pay.salary') }}">Pay Salary</a>
+                            </li>
                         </ul>
                     </div>
                 </li>

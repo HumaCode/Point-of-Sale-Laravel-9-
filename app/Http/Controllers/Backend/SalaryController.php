@@ -91,4 +91,15 @@ class SalaryController extends Controller
 
         return redirect()->route('all.advance.salary')->with($notification);
     }
+
+
+
+    // ============ 
+    public function paySalary()
+    {
+        $employee   = Employee::latest()->get();
+        $title      = "Pay Salary";
+
+        return view('backend.salary.pay_salary', compact('title', 'employee'));
+    }
 }

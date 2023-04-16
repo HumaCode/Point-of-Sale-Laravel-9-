@@ -82,6 +82,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/all/advance/salary', 'allAdvanceSalary')->name('all.advance.salary');
         Route::get('/edit/advance/salary/{id}', 'editAdvanceSalary')->name('edit.advance.salary');
         Route::post('/advance/salary/update', 'updateAdvanceSalary')->name('advance.salary.update');
+
+        // pay salary
+        Route::get('/pay/salary', 'paySalary')->name('pay.salary');
     });
 });
 
