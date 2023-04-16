@@ -79,14 +79,32 @@ return number_format($angka, 0, ',', '.');
                                     <td><span class="badge bg-info">{{ date("F", strtotime('-1 month')) }}</span>
                                     </td>
                                     <td>Rp. {{ format_uang($item->salary) }}</td>
-                                    <td></td>
+                                    <td>
+
+
+                                        @if(empty($item->advance->advance_salary) )
+                                        <p>No Advance</p>
+                                        @else
+                                        Rp. {{ format_uang($item->advance->advance_salary) }}
+                                        @endif
+
+                                    </td>
+                                    <td>
+                                        @php
+                                        if(!empty($item->advance->advance_salary)) {
+                                        $amount = $item->salary - $item->advance->advance_salary;
+                                        }else{
+                                        $amount = 0;
+                                        }
+                                        @endphp
+
+                                        <strong class="text-white">Rp. {{ format_uang(round($amount)) }}</strong>
+                                    </td>
                                     <td class="text-center">
                                         <a href="{{ route('edit.advance.salary', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
-                                        <a href="{{ route('delete.employee', $item->id) }}"
-                                            class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
-                                                class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                                class="mdi mdi-cash-usd-outline me-1"></i> Pay Now</a> &nbsp;
+
                                     </td>
                                 </tr><i @endforeach </tbody>
                         </table>

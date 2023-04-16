@@ -32,7 +32,6 @@ class SalaryController extends Controller
             'employee_id'       => 'required',
             'month'             => 'required',
             'year'              => 'required',
-            'advance_salary'    => 'required|max:255',
         ]);
 
         $employee_id = $request->employee_id;
