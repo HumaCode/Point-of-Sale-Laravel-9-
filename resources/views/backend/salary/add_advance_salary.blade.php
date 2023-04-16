@@ -28,25 +28,26 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form method="post" action="{{ route('employee.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('advance.salary.store') }}">
                             @csrf
 
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="employe_id" class="form-label"> Name</label>
-                                        <select class="form-select @error('employe_id') is-invalid @enderror"
-                                            id="employe_id" name="employe_id">
+                                        <label for="employee_id" class="form-label"> Name</label>
+                                        <select class="form-select @error('employee_id') is-invalid @enderror"
+                                            id="employee_id" name="employee_id">
                                             <option selected disabled>-- Select --</option>
 
                                             @foreach ($employee as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }} - {{ $item->phone }}
+                                            <option value="{{ $item->id }}">{{ $item->name }} - Rp. {{
+                                                $item->salary }}
                                             </option>
                                             @endforeach
 
                                         </select>
-                                        @error('employe_id')
+                                        @error('employee_id')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
