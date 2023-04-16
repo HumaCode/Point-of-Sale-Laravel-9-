@@ -95,6 +95,7 @@ Route::middleware('auth')->group(function () {
     // attendance
     Route::controller(AttendenceController::class)->group(function () {
         Route::get('/employee/attend/list', 'employeeAttendList')->name('employee.attend.list');
+        Route::get('/add/employee/attend', 'addEmployeeAttend')->name('add.employee.attend');
     });
 });
 
