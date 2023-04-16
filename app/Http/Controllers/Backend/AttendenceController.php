@@ -20,8 +20,8 @@ class AttendenceController extends Controller
     public function addEmployeeAttend()
     {
         $title      = "Add Employe Attendence";
-        $employee   = Employee::all();
+        $employees   = Employee::all();
 
-        return view('backend.attendence.add_employee_attend', compact('title', 'employee'));
+        return view('backend.attendence.add_employee_attend', compact('title', 'employees'));
     }
 }
