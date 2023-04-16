@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\AdvanceSalary;
 use App\Models\Employee;
+use App\Models\PaySalary;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -108,5 +109,27 @@ class SalaryController extends Controller
         $title      = "Pay Now Salary";
 
         return view('backend.salary.paid_salary', compact('paysalary', 'title'));
+    }
+
+    public function employeSalaryStore(Request $request)
+    {
+        $employe_id = $request->id;
+
+        PaySalary::insert([
+            'employee_id'       => $employe_id,
+            'salary_month'      => $request->month,
+            'paid_amount'       => $request->paid_amount,
+            'advance_salary'    => $request->advance_salary,
+            'due_salary'        => $request->due_salary,
+            'created_at'        => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message'       => 'Employee Salary Paid Successfull',
+            'alert-type'    => 'success',
+        );
+
+
+        return redirect()->route('pay.salary')->with($notification);
     }
 }
