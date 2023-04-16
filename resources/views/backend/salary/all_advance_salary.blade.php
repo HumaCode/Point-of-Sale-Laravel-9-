@@ -79,7 +79,7 @@ return number_format($angka, 0, ',', '.');
                                     <td>Rp. {{ format_uang($item->employee->salary) }}</td>
                                     <td>Rp. {{ format_uang($item->advance_salary) }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('edit.employee', $item->id) }}"
+                                        <a href="{{ route('edit.advance.salary', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
                                         <a href="{{ route('delete.employee', $item->id) }}"

@@ -18,7 +18,6 @@ class SalaryController extends Controller
         return view('backend.salary.all_advance_salary', compact('salary', 'title'));
     }
 
-
     public function addAdvanceSalary()
     {
         $employee   = Employee::latest()->get();
@@ -60,6 +59,36 @@ class SalaryController extends Controller
                 'alert-type'    => 'warning',
             );
         }
-        return redirect()->back()->with($notification);
+        return redirect()->route('all.advance.salary')->with($notification);
+    }
+
+    public function editAdvanceSalary($id)
+    {
+        $employee   = Employee::latest()->get();
+        $salary     = AdvanceSalary::findOrFail($id);
+        $title      = "Edit Advance Salary";
+
+        return view('backend.salary.edit_advance_salary', compact('salary', 'title', 'employee'));
+    }
+
+    public function updateAdvanceSalary(Request $request)
+    {
+        $salary_id = $request->id;
+
+        AdvanceSalary::findOrFail($salary_id)->update([
+            'employee_id'       => $request->employee_id,
+            'month'             => $request->month,
+            'year'              => $request->year,
+            'advance_salary'    => $request->advance_salary,
+            'updated_at'        => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message'       => 'Advance Salary Updated Successfull',
+            'alert-type'    => 'success',
+        );
+
+
+        return redirect()->route('all.advance.salary')->with($notification);
     }
 }

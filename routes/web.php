@@ -80,6 +80,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/add/advance/salary', 'addAdvanceSalary')->name('add.advance.salary');
         Route::post('/advance/salary/store', 'storeAdvanceSalary')->name('advance.salary.store');
         Route::get('/all/advance/salary', 'allAdvanceSalary')->name('all.advance.salary');
+        Route::get('/edit/advance/salary/{id}', 'editAdvanceSalary')->name('edit.advance.salary');
+        Route::post('/advance/salary/update', 'updateAdvanceSalary')->name('advance.salary.update');
     });
 });
 
