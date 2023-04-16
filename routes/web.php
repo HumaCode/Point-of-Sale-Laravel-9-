@@ -87,6 +87,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/pay/salary', 'paySalary')->name('pay.salary');
         Route::get('/pay/now/salary{id}', 'payNowSalary')->name('pay.now.salary');
         Route::post('/employee/salary/store', 'employeSalaryStore')->name('employee.salary.store');
+        Route::get('/month/salary', 'monthSalary')->name('month.salary');
     });
 });
 
