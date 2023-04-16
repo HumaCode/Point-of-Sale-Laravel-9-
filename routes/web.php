@@ -3,8 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Backend\SupplierController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,6 +72,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/supplier', 'updateSupplier')->name('supplier.update');
         Route::get('/detail/supplier/{id}', 'detailSupplier')->name('detail.supplier');
         Route::get('/delete/supplier/{id}', 'deleteSupplier')->name('delete.supplier');
+    });
+
+
+    // salary
+    Route::controller(SalaryController::class)->group(function () {
+        Route::get('/add/advance/salary', 'addAdvanceSalary')->name('add.advance.salary');
     });
 });
 
