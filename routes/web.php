@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AttendenceController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\SalaryController;
@@ -88,6 +89,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/pay/now/salary{id}', 'payNowSalary')->name('pay.now.salary');
         Route::post('/employee/salary/store', 'employeSalaryStore')->name('employee.salary.store');
         Route::get('/month/salary', 'monthSalary')->name('month.salary');
+    });
+
+
+    // attendance
+    Route::controller(AttendenceController::class)->group(function () {
+        Route::get('/employee/attend/list', 'employeeAttendList')->name('employee.attend.list');
     });
 });
 
