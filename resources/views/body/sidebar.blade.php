@@ -113,6 +113,23 @@
                     </div>
                 </li>
 
+
+                <li>
+                    <a href="#sidebarCategory" data-bs-toggle="collapse">
+                        <i class="mdi mdi-cash-usd-outline"></i>
+                        <span> Category </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarCategory">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.category') }}"> All Category</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="menu-title mt-2">Custom</li>
 
                 <li>
