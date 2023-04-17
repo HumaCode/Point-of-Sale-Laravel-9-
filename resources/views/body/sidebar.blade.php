@@ -117,13 +117,32 @@
                 <li>
                     <a href="#sidebarCategory" data-bs-toggle="collapse">
                         <i class="mdi mdi-cash-usd-outline"></i>
-                        <span> Category </span>
+                        <span> Categories </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarCategory">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('all.category') }}"> All Category</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#sidebarProduct" data-bs-toggle="collapse">
+                        <i class="mdi mdi-cash-usd-outline"></i>
+                        <span> Products </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarProduct">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.product') }}"> All Product</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('all.category') }}"> Add Product</a>
                             </li>
 
                         </ul>

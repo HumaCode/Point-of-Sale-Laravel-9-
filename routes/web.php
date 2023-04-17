@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AttendenceController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Backend\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -110,6 +111,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/category/{id}', 'editCategory')->name('edit.category');
         Route::post('/update/category', 'updateCategory')->name('category.update');
         Route::get('/delete/category/{id}', 'deleteCategory')->name('delete.category');
+    });
+
+
+    // product
+    Route::controller(ProductController::class)->group(function () {
+        Route::get('/all/product', 'allProduct')->name('all.product');
     });
 });
 
