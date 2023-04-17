@@ -25,10 +25,10 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
 
+                        <button type="button" class="btn btn-primary rounded-pill waves-effect waves-light"
+                            data-bs-toggle="modal" data-bs-target="#signup-modal"><i class="mdi mdi-plus me-1"></i> Add
+                            Category</button>
 
-                        <a href="{{ route('add.customer') }}"
-                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                class="mdi mdi-plus me-1"></i> Add Category</a>
 
                     </div>
                     <h4 class="page-title"><i class="mdi mdi-account-multiple-outline me-1"></i> All Category</h4>
@@ -107,4 +107,37 @@
 <!-- Datatables init -->
 <script src="{{ asset('backend') }}/assets/js/pages/datatables.init.js"></script>
 @endpush
+
+
+
+
+<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="text-center mt-2 mb-4">
+
+                </div>
+
+                <form class="px-3" action="{{ route('category.store') }}" method="post">
+                    @csrf
+
+                    <div class="mb-3">
+                        <label for="category_name" class="form-label">Category Name</label>
+                        <input class="form-control" type="text" name="category_name" id="category_name" required=""
+                            placeholder="Category Name">
+                    </div>
+
+
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 @endsection
