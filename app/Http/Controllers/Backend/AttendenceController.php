@@ -19,8 +19,8 @@ class AttendenceController extends Controller
 
     public function addEmployeeAttend()
     {
-        $title      = "Add Employe Attendence";
-        $employees   = Employee::all();
+        $title          = "Add Employe Attendence";
+        $employees      = Employee::all();
 
         return view('backend.attendence.add_employee_attend', compact('title', 'employees'));
     }
@@ -44,5 +44,14 @@ class AttendenceController extends Controller
         );
 
         return redirect()->route('employee.attend.list')->with($notification);
+    }
+
+    public function editEmployeeAttend($date)
+    {
+        $employees      = Employee::all();
+        $editData       = Attendence::where('date', $date)->get();
+        $title          = "Edit Employee Attendence";
+
+        return view('backend.attendence.edit_employee_attend', compact('title', 'editData', 'employees'));
     }
 }

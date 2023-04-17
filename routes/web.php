@@ -97,6 +97,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/employee/attend/list', 'employeeAttendList')->name('employee.attend.list');
         Route::get('/add/employee/attend', 'addEmployeeAttend')->name('add.employee.attend');
         Route::post('/employee/attend/store', 'storeEmployeeAttend')->name('employee.attend.store');
+        Route::get('/edit/employee/attend/{date}', 'editEmployeeAttend')->name('employee.attend.edit');
     });
 });
 
