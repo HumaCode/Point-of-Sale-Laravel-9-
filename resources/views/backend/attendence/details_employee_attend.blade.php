@@ -26,13 +26,12 @@
                     <div class="page-title-right">
 
 
-                        <a href="{{ route('add.employee.attend') }}"
+                        <a href="{{ route('add.customer') }}"
                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                class="mdi mdi-plus me-1"></i> Add Employe Attendence</a>
+                                class="mdi mdi-plus me-1"></i> {{ $title }}</a>
 
                     </div>
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-outline me-1"></i> Employee Attendence
-                    </h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-outline me-1"></i> {{ $title }}</h4>
                 </div>
             </div>
         </div>
@@ -48,27 +47,28 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
                                     <th>Date</th>
-                                    <th class="text-center">Action</th>
+                                    <th>Attend Status</th>
                                 </tr>
                             </thead>
 
 
                             <tbody>
 
-                                @foreach ($allData as $key => $item)
+                                @foreach ($details as $key => $item)
 
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
-                                    <td class="text-center">
-                                        <a href="{{ route('employee.attend.edit', $item->date) }}"
-                                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
-                                        <a href="{{ route('employee.attend.view', $item->date) }}"
-                                            class="btn btn-danger rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-eye me-1"></i> View</a>
+                                    <td>
+                                        <img src="{{ asset($item->employee->image) }}"
+                                            style="width: 50px; height: 40px;" alt="">
                                     </td>
+                                    <td>{{ $item->employee->name }}</td>
+                                    <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
+                                    <td>{{ $item->attend_status }}</td>
+
                                 </tr><i @endforeach </tbody>
                         </table>
 

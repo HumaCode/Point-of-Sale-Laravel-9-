@@ -27,12 +27,14 @@ class AttendenceController extends Controller
 
     public function storeEmployeeAttend(Request $request)
     {
+        Attendence::where('date', date('Y-m-d', strtotime($request->date)))->delete();
+
         $countemployee = count($request->employee_id);
 
         for ($i = 0; $i < $countemployee; $i++) {
-            $attend_status = 'attend_status' . $i;
-            $attend = new Attendence();
-            $attend->date = date('Y-m-d', strtotime($request->date));
+            $attend_status  = 'attend_status' . $i;
+            $attend         = new Attendence();
+            $attend->date   = date('Y-m-d', strtotime($request->date));
             $attend->employee_id = $request->employee_id[$i];
             $attend->attend_status = $request->$attend_status;
             $attend->save();
@@ -53,5 +55,13 @@ class AttendenceController extends Controller
         $title          = "Edit Employee Attendence";
 
         return view('backend.attendence.edit_employee_attend', compact('title', 'editData', 'employees'));
+    }
+
+    public function viewEmployeeAttend($date)
+    {
+        $details       = Attendence::where('date', $date)->get();
+        $title         = "Detail Employee Attendence";
+
+        return view('backend.attendence.details_employee_attend', compact('title', 'details'));
     }
 }

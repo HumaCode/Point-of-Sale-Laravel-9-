@@ -92,10 +92,10 @@
                                 <tbody>
                                     @foreach ($editData as $key => $item)
                                     <tr class="text-center">
-                                        <input type="hidden" name="employee_id[]" value="{{$item->id}}"
+                                        <input type="hidden" name="employee_id[]" value="{{$item->employee_id}}"
                                             class="employee_id">
                                         <td>{{$key+1}}</td>
-                                        <td>{{$item['employee']['name']}}</td>
+                                        <td>{{$item->employee->name}}</td>
                                         <td colspan="3">
                                             <div class="switch-toggle switch-3 switch-candy">
                                                 <input class="present" id="present{{$key}}" name="attend_status{{$key}}"
