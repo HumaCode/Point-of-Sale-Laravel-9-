@@ -60,13 +60,11 @@
 
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ date('Y-m-d', stsrtotime($item->date)) }}</td>
+                                    <td>{{ date('Y-m-d', strtotime($item->date)) }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('edit.customer', $item->id) }}"
-                                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
+                                        <a href="" class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
-                                        <a href="{{ route('delete.customer', $item->id) }}"
-                                            class="btn btn-danger rounded-pill waves-effect waves-light"><i
+                                        <a href="" class="btn btn-danger rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-eye me-1"></i> View</a>
                                     </td>
                                 </tr><i @endforeach </tbody>

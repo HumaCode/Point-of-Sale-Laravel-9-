@@ -100,7 +100,7 @@
                 <li>
                     <a href="#sidebarAttendance" data-bs-toggle="collapse">
                         <i class="mdi mdi-cash-usd-outline"></i>
-                        <span> Employee Salary </span>
+                        <span> Employee Attendence </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarAttendance">
