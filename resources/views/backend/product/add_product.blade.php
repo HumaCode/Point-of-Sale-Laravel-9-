@@ -30,27 +30,24 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form method="post" action="{{ route('customer.store') }}" enctype="multipart/form-data">
+                        <form id="myForm" method="post" action="{{ route('customer.store') }}"
+                            enctype="multipart/form-data">
                             @csrf
 
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="product_name" class="form-label">Name</label>
-                                        <input type="text"
-                                            class="form-control @error('product_name') is-invalid @enderror"
-                                            name="product_name" id="product_name" value="{{ old('product_name') }}">
-                                        @error('product_name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <input type="text" class="form-control" name="product_name" id="product_name"
+                                            value="{{ old('product_name') }}">
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="category_id" class="form-label">Category</label>
-                                        <select name="category_id" id="category_id"
-                                            class="form-control @error('category_id') is-invalid @enderror">
+                                        <select name="category_id" id="category_id" class="form-control ">
                                             <option disabled selected>-- Select --</option>
 
                                             @foreach ($category as $item)
@@ -58,18 +55,15 @@
                                             @endforeach
 
                                         </select>
-                                        @error('category_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+
                                     </div>
                                 </div> <!-- end col -->
 
 
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="supplier_id" class="form-label">Supplier</label>
-                                        <select name="supplier_id" id="supplier_id"
-                                            class="form-control @error('supplier_id') is-invalid @enderror">
+                                        <select name="supplier_id" id="supplier_id" class="form-control ">
                                             <option disabled selected>-- Select --</option>
 
                                             @foreach ($supplier as $sup)
@@ -78,98 +72,75 @@
                                             @endforeach
 
                                         </select>
-                                        @error('supplier_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+
                                     </div>
                                 </div> <!-- end col -->
 
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="product_code" class="form-label">Product Code</label>
-                                        <input type="text" name="product_code"
-                                            class="form-control  @error('product_code') is-invalid @enderror"
-                                            id="product_code" value="{{ old('product_code') }}">
-                                        @error('product_code')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <input type="text" name="product_code" class="form-control" id="product_code"
+                                            value="{{ old('product_code') }}">
+
                                     </div>
                                 </div> <!-- end col -->
 
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="product_garage" class="form-label">Product Garage</label>
-                                        <input type="text" name="product_garage"
-                                            class="form-control  @error('product_garage') is-invalid @enderror"
+                                        <input type="text" name="product_garage" class="form-control  "
                                             id="product_garage" value="{{ old('product_garage') }}">
-                                        @error('product_garage')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+
                                     </div>
                                 </div> <!-- end col -->
 
 
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="product_store" class="form-label">Product Store</label>
-                                        <input type="text" name="product_store"
-                                            class="form-control  @error('product_store') is-invalid @enderror"
-                                            id="product_store" value="{{ old('product_store') }}">
-                                        @error('product_store')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <input type="text" name="product_store" class="form-control " id="product_store"
+                                            value="{{ old('product_store') }}">
+
                                     </div>
                                 </div> <!-- end col -->
 
 
 
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="buying_date" class="form-label">Buying Date</label>
-                                        <input type="date" name="buying_date"
-                                            class="form-control  @error('buying_date') is-invalid @enderror"
-                                            id="buying_date" value="{{ old('buying_date') }}">
-                                        @error('buying_date')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <input type="date" name="buying_date" class="form-control " id="buying_date"
+                                            value="{{ old('buying_date') }}">
+
                                     </div>
                                 </div> <!-- end col -->
 
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="expire_date" class="form-label">Expire Date</label>
-                                        <input type="date" name="expire_date"
-                                            class="form-control  @error('expire_date') is-invalid @enderror"
-                                            id="expire_date" value="{{ old('expire_date') }}">
-                                        @error('expire_date')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <input type="date" name="expire_date" class="form-control  " id="expire_date"
+                                            value="{{ old('expire_date') }}">
+
                                     </div>
                                 </div> <!-- end col -->
 
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="buying_price" class="form-label">Buying Price</label>
-                                        <input type="text" name="buying_price"
-                                            class="form-control  @error('buying_price') is-invalid @enderror"
-                                            id="buying_price" value="{{ old('buying_price') }}">
-                                        @error('buying_price')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                        <input type="text" name="buying_price" class="form-control " id="buying_price"
+                                            value="{{ old('buying_price') }}">
+
                                     </div>
                                 </div> <!-- end col -->
 
 
 
                                 <div class="col-md-6">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="selling_price" class="form-label">Selling Price</label>
-                                        <input type="text" name="selling_price"
-                                            class="form-control  @error('selling_price') is-invalid @enderror"
+                                        <input type="text" name="selling_price" class="form-control  "
                                             id="selling_price" value="{{ old('selling_price') }}">
-                                        @error('selling_price')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+
                                     </div>
                                 </div> <!-- end col -->
                             </div>
@@ -177,13 +148,11 @@
                             <div class="row">
 
                                 <div class="col-md-12">
-                                    <div class="mb-3">
+                                    <div class="form-group mb-3">
                                         <label for="product_image" class="form-label">Image</label>
                                         <input type="file" name="product_image" id="product_image"
-                                            class="form-control @error('product_image') is-invalid @enderror">
-                                        @error('product_image')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
+                                            class="form-control ">
+
                                     </div>
                                 </div> <!-- end col -->
 
@@ -218,6 +187,98 @@
 </div> <!-- container -->
 
 
+
+
+
+
+@endsection
+
+
+@push('scripts')
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                product_name: {
+                    required : true,
+                },  
+                category_id: {
+                    required : true,
+                },  
+                supplier_id: {
+                    required : true,
+                },  
+                product_code: {
+                    required : true,
+                },  
+                product_garage: {
+                    required : true,
+                },  
+                product_store: {
+                    required : true,
+                },  
+                buying_price: {
+                    required : true,
+                },  
+                expire_date: {
+                    required : true,
+                },  
+                selling_price: {
+                    required : true,
+                },  
+                product_image: {
+                    required : true,
+                },  
+            },
+            messages :{
+                product_name: {
+                    required : 'Please Enter Product Name',
+                }, 
+                category_id: {
+                    required : 'Please Select Category',
+                }, 
+                supplier_id: {
+                    required : 'Please Select Supplier',
+                }, 
+                product_code: {
+                    required : 'Please Enter Product Code',
+                }, 
+                product_garage: {
+                    required : 'Please Enter Product Garage',
+                }, 
+                product_store: {
+                    required : 'Please Enter Product Store',
+                }, 
+                buying_price: {
+                    required : 'Please Select Buying Price',
+                }, 
+                expire_date: {
+                    required : 'Please Select Expire Date',
+                }, 
+                selling_price: {
+                    required : 'Please Enter Selling Price',
+                }, 
+                product_image: {
+                    required : 'Please Choose Image',
+                }, 
+
+            },
+            errorElement : 'span', 
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+    
+</script>
+
 <script>
     $(document).ready(function() {
         $('#product_image').change(function(e) {
@@ -229,7 +290,4 @@
         })
     })
 </script>
-
-
-
-@endsection
+@endpush

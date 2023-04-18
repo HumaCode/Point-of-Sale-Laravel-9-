@@ -83,7 +83,7 @@ $adminData = App\Models\User::find($id);
 
     <!-- Plugins js-->
     <script src="{{ asset('backend') }}/assets/libs/flatpickr/flatpickr.min.js"></script>
-    <script src="{{ asset('backend') }}/assets/libs/apexcharts/apexcharts.min.js"></script>
+    {{-- <script src="{{ asset('backend') }}/assets/libs/apexcharts/apexcharts.min.js"></script> --}}
 
     <script src="{{ asset('backend') }}/assets/libs/selectize/js/standalone/selectize.min.js"></script>
 
@@ -92,6 +92,9 @@ $adminData = App\Models\User::find($id);
 
     <!-- App js-->
     <script src="{{ asset('backend') }}/assets/js/app.min.js"></script>
+
+    <!-- App js-->
+    <script src="{{ asset('backend') }}/assets/js/validate.min.js"></script>
 
     <!-- Tippy js-->
     <script src="{{ asset('backend') }}/assets/libs/tippy.js/tippy.all.min.js"></script>
