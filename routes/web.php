@@ -119,6 +119,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/all/product', 'allProduct')->name('all.product');
         Route::get('/add/product', 'addProduct')->name('add.product');
         Route::post('/store/product', 'storeProduct')->name('product.store');
+        Route::get('/edit/product/{id}', 'editProduct')->name('edit.product');
+        Route::post('/update/product', 'updateProduct')->name('product.update');
+        Route::get('/delete/product/{id}', 'deleteProduct')->name('delete.product');
     });
 });
 
