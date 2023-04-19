@@ -69,8 +69,8 @@
                                             alt="">
                                     </td>
                                     <td>{{ $item->product_name }}</td>
-                                    <td>{{ $item->category_id }}</td>
-                                    <td>{{ $item->supplier_id }}</td>
+                                    <td>{{ $item->category->category_name }}</td>
+                                    <td>{{ $item->supplier->name }}</td>
                                     <td>{{ $item->product_code }}</td>
                                     <td>{{ $item->selling_price }}</td>
                                     <td class="text-center">

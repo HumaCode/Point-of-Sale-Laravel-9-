@@ -30,7 +30,7 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form id="myForm" method="post" action="{{ route('customer.store') }}"
+                        <form id="myForm" method="post" action="{{ route('product.store') }}"
                             enctype="multipart/form-data">
                             @csrf
 
