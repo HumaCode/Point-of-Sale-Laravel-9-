@@ -153,4 +153,11 @@ class ProductController extends Controller
 
         return view('backend.product.barcode_product', compact('title', 'product'));
     }
+
+    public function importProduct()
+    {
+        $title = "Import Product";
+
+        return view('backend.product.import_product', compact('title'));
+    }
 }

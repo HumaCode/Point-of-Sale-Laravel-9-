@@ -123,6 +123,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/product', 'updateProduct')->name('product.update');
         Route::get('/delete/product/{id}', 'deleteProduct')->name('delete.product');
         Route::get('/barcode/product/{id}', 'barcodeProduct')->name('barcode.product');
+        Route::get('/import/product', 'importProduct')->name('import.product');
     });
 });
 
