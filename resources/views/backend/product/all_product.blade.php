@@ -77,6 +77,9 @@
                                         <a href="{{ route('edit.product', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
+                                        <a href="{{ route('barcode.product', $item->id) }}"
+                                            class="btn btn-info rounded-pill waves-effect waves-light"><i
+                                                class="mdi mdi-barcode-scan me-1"></i> Code</a> &nbsp;
                                         <a href="{{ route('delete.product', $item->id) }}"
                                             class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
                                                 class="mdi mdi-trash-can-outline me-1"></i> Delete</a>

@@ -142,4 +142,12 @@ class ProductController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function barcodeProduct($id)
+    {
+        $product    = Product::findOrFail($id);
+        $title      = "Product Code";
+
+        return view('backend.product.barcode_product', compact('title', 'product'));
+    }
 }
