@@ -13,6 +13,13 @@
 <!-- third party css end -->
 @endpush
 
+@php
+function format_uang($angka)
+{
+return number_format($angka, 0, ',', '.');
+}
+@endphp
+
 @section('admin')
 
 <div class="content">
@@ -26,6 +33,12 @@
                     <div class="page-title-right">
 
 
+                        <a href="{{ route('add.product') }}"
+                            class="btn btn-info rounded-pill waves-effect waves-light"><i
+                                class="mdi mdi-file-import-outline me-1"></i> Import</a>
+                        <a href="{{ route('add.product') }}"
+                            class="btn btn-danger rounded-pill waves-effect waves-light"><i
+                                class="mdi mdi-file-export-outline me-1"></i> Export</a>
                         <a href="{{ route('add.product') }}"
                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                 class="mdi mdi-plus me-1"></i> Add Product</a>
@@ -72,17 +85,24 @@
                                     <td>{{ $item->category->category_name }}</td>
                                     <td>{{ $item->supplier->name }}</td>
                                     <td>{{ $item->product_code }}</td>
-                                    <td>{{ $item->selling_price }}</td>
-                                    <td class="text-center">
+                                    <td>Rp. {{ format_uang($item->selling_price) }}</td>
+                                    <td class="text-center " id="tooltip-container">
                                         <a href="{{ route('edit.product', $item->id) }}"
-                                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
+                                            class="btn btn-primary rounded-pill waves-effect waves-light"
+                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Edit"><i class="fas fa-pencil-alt"></i>
+                                        </a> &nbsp;
                                         <a href="{{ route('barcode.product', $item->id) }}"
-                                            class="btn btn-info rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-barcode-scan me-1"></i> Code</a> &nbsp;
+                                            class="btn btn-info rounded-pill waves-effect waves-light"
+                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Product Barcode"><i
+                                                class="fas fa-barcode"></i></a> &nbsp;
                                         <a href="{{ route('delete.product', $item->id) }}"
-                                            class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
-                                                class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                            class="btn btn-danger rounded-pill waves-effect waves-light"
+                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Delete" id="delete"><i
+                                                class="fas fa-trash-alt "></i>
+                                        </a>
                                     </td>
                                 </tr><i @endforeach </tbody>
                         </table>

@@ -90,7 +90,7 @@
                                     <div class="form-group mb-3">
                                         <label for="product_code" class="form-label">Product Code</label>
                                         <input type="text" name="product_code" class="form-control" id="product_code"
-                                            value="{{ old('product_code', $product->product_code) }}">
+                                            value="{{ old('product_code', $product->product_code) }}" readonly>
 
                                     </div>
                                 </div> <!-- end col -->
