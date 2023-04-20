@@ -76,14 +76,7 @@
                                     </div>
                                 </div> <!-- end col -->
 
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="product_code" class="form-label">Product Code</label>
-                                        <input type="text" name="product_code" class="form-control" id="product_code"
-                                            value="{{ old('product_code') }}">
 
-                                    </div>
-                                </div> <!-- end col -->
 
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
@@ -150,8 +143,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-3">
                                         <label for="product_image" class="form-label">Image</label>
-                                        <input type="file" name="product_image" id="product_image"
-                                            class="form-control ">
+                                        <input type="file" name="product_image" id="product_image" class="form-control"
+                                            accept=".jpg,.png">
 
                                     </div>
                                 </div> <!-- end col -->
@@ -208,9 +201,6 @@
                 supplier_id: {
                     required : true,
                 },  
-                product_code: {
-                    required : true,
-                },  
                 product_garage: {
                     required : true,
                 },  
@@ -239,9 +229,6 @@
                 }, 
                 supplier_id: {
                     required : 'Please Select Supplier',
-                }, 
-                product_code: {
-                    required : 'Please Enter Product Code',
                 }, 
                 product_garage: {
                     required : 'Please Enter Product Garage',

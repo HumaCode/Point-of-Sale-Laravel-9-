@@ -16,10 +16,9 @@ $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
         <div class="col-12">
             <div class="page-title-box">
                 <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">{{ config('app.name') }}</a></li>
-                        <li class="breadcrumb-item active">Barcode Product</li>
-                    </ol>
+                    <a href="{{ route('all.product') }}"
+                        class="btn btn-primary rounded-pill waves-effect waves-light"><i
+                            class="mdi mdi-keyboard-backspace me-1"></i> Back</a>
                 </div>
                 <h4 class="page-title"><i class="mdi mdi-barcode-scan me-1"></i> Barcode Product</h4>
             </div>
