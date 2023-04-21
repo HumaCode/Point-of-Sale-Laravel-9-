@@ -155,18 +155,21 @@
                 <li class="menu-title mt-2">Custom</li>
 
                 <li>
-                    <a href="#sidebarAuth" data-bs-toggle="collapse">
+                    <a href="#sidebarExpense" data-bs-toggle="collapse">
                         <i class="mdi mdi-account-circle-outline"></i>
-                        <span> Auth Pages </span>
+                        <span> Expense </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarAuth">
+                    <div class="collapse" id="sidebarExpense">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="auth-login.html">Log In</a>
+                                <a href="{{ route('add.expense') }}">Today Expense</a>
                             </li>
                             <li>
-                                <a href="auth-login-2.html">Log In 2</a>
+                                <a href="auth-login-2.html">Month Expense</a>
+                            </li>
+                            <li>
+                                <a href="auth-login-2.html">Year Expense</a>
                             </li>
                         </ul>
                     </div>

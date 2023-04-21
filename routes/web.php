@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AttendenceController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Backend\ExpenseController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Backend\SupplierController;
@@ -126,6 +127,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/import/product', 'importProduct')->name('import.product');
         Route::get('/export', 'export')->name('export');
         Route::post('/import', 'import')->name('import');
+    });
+
+
+    // expense
+    Route::controller(ExpenseController::class)->group(function () {
+        Route::get('/add/expense', 'addExpense')->name('add.expense');
     });
 });
 
