@@ -33,8 +33,7 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form id="myForm" method="post" action="{{ route('product.store') }}"
-                            enctype="multipart/form-data">
+                        <form method="post" action="{{ route('import') }}" enctype="multipart/form-data">
                             @csrf
 
 
@@ -42,7 +41,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group mb-3">
                                         <label for="import_file" class="form-label">XLSX File Import</label>
-                                        <input type="file" class="form-control" name="import_file" id="import_file">
+                                        <input type="file" class="form-control" name="import_file" id="import_file"
+                                            accept=".xlsx,.xls">
 
                                     </div>
                                 </div>

@@ -33,11 +33,10 @@ return number_format($angka, 0, ',', '.');
                     <div class="page-title-right">
 
 
-                        <a href="{{ route('add.product') }}"
+                        <a href="{{ route('import.product') }}"
                             class="btn btn-info rounded-pill waves-effect waves-light"><i
                                 class="mdi mdi-file-import-outline me-1"></i> Import</a>
-                        <a href="{{ route('add.product') }}"
-                            class="btn btn-danger rounded-pill waves-effect waves-light"><i
+                        <a href="{{ route('export') }}" class="btn btn-danger rounded-pill waves-effect waves-light"><i
                                 class="mdi mdi-file-export-outline me-1"></i> Export</a>
                         <a href="{{ route('add.product') }}"
                             class="btn btn-primary rounded-pill waves-effect waves-light"><i

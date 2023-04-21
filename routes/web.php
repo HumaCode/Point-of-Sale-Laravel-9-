@@ -125,6 +125,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/barcode/product/{id}', 'barcodeProduct')->name('barcode.product');
         Route::get('/import/product', 'importProduct')->name('import.product');
         Route::get('/export', 'export')->name('export');
+        Route::post('/import', 'import')->name('import');
     });
 });
 

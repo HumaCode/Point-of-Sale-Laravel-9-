@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use App\Exports\ProductExport;
+use App\Imports\ProductImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
@@ -166,5 +167,17 @@ class ProductController extends Controller
     public function export()
     {
         return Excel::download(new ProductExport, 'products.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new ProductImport, $request->file('import_file'));
+
+        $notification = array(
+            'message'       => 'Product Imported Successfull',
+            'alert-type'    => 'success',
+        );
+
+        return redirect()->route('all.product')->with($notification);
     }
 }
