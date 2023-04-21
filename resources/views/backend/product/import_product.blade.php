@@ -14,8 +14,7 @@
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
 
-                        <a href="{{ route('add.product') }}"
-                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
+                        <a href="{{ route('export') }}" class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                 class="mdi mdi-download me-1"></i> Download XLSX</a>
 
 
