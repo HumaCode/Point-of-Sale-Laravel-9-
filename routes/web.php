@@ -133,6 +133,7 @@ Route::middleware('auth')->group(function () {
     // expense
     Route::controller(ExpenseController::class)->group(function () {
         Route::get('/add/expense', 'addExpense')->name('add.expense');
+        Route::post('/store/expense', 'storeExpense')->name('expense.store');
     });
 });
 
