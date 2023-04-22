@@ -34,4 +34,13 @@ class ExpenseController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function todayExpense()
+    {
+        $date   = date('d-m-Y');
+        $today  = Expense::where('date', $date)->get();
+        $title  = "Today Expense";
+
+        return view('backend.expense.today_expense', compact('date', 'today', 'title'));
+    }
 }
