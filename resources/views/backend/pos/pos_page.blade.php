@@ -41,7 +41,80 @@
             <div class="card text-center">
                 <div class="card-body">
 
+                    <div class="table-responsive">
+                        <table class="table table-bordered border-primary mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>QTY</th>
+                                    <th>Price</th>
+                                    <th>Subtotal</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>
+                                        <input type="number" min="1" value="0" style="width: 40px;">
+                                    </td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>
+                                        <a href="" class="text-white"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
 
+                            </tbody>
+                        </table>
+                    </div> <!-- end .table-responsive-->
+
+                    <div class="bg-primary">
+                        <br>
+                        <p style="font-size: 18px; color:#fff;"> Quantity : 902309239</p>
+                        <p style="font-size: 18px; color:#fff;"> SubTotal : 902309239</p>
+                        <p style="font-size: 18px; color:#fff;"> Vat : 902309239</p>
+                        <p>
+                        <h2 class="text-white">Total :</h2>
+                        <h1 class="text-white">902309239</h1>
+                        </p>
+                        <br>
+                    </div>
+
+                    <hr>
+
+                    <form action="">
+
+                        <label for="customer" class="form-label">All Customer</label>
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="form-group mt-2">
+                                    <select name="customer" id="customer" class="form-control ">
+                                        <option disabled selected>-- Select --</option>
+
+                                        @foreach ($customer as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mt-">
+
+                                <button type="submit" class="btn btn-blue waves-effect waves-light mt-2"><i
+                                        class="mdi mdi-plus"></i> Add Customer</button>
+                            </div>
+                        </div>
+
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
+                                    class="fas fa-file-invoice-dollar"></i> Create Invoice</button>
+                        </div>
+
+                    </form>
 
                 </div>
             </div> <!-- end card -->
