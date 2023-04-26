@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\ExpenseController;
+use App\Http\Controllers\Backend\PosController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SalaryController;
 use App\Http\Controllers\Backend\SupplierController;
@@ -141,6 +142,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/month/expense', 'monthExpense')->name('month.expense');
         Route::get('/year/expense', 'yearExpense')->name('year.expense');
+    });
+
+
+    // POS
+    Route::controller(PosController::class)->group(function () {
+        Route::get('/pos', 'pos')->name('pos');
     });
 });
 

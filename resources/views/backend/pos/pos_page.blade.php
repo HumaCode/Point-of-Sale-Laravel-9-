@@ -1,5 +1,8 @@
 @extends('admin_dashboard')
 
+@section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 @push('css')
 <!-- third party css -->
 <link href="{{ asset('backend') }}/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet"
@@ -13,47 +16,44 @@
 <!-- third party css end -->
 @endpush
 
-@php
-function format_uang($angka)
-{
-return number_format($angka, 0, ',', '.');
-}
-@endphp
 
-@section('admin')
+<!-- Start Content-->
+<div class="container-fluid">
 
-<div class="content">
-
-    <!-- Start Content-->
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <div class="page-title-right">
-
-
-                        <a href="{{ route('import.product') }}"
-                            class="btn btn-info rounded-pill waves-effect waves-light"><i
-                                class="mdi mdi-file-import-outline me-1"></i> Import</a>
-                        <a href="{{ route('export') }}" class="btn btn-danger rounded-pill waves-effect waves-light"><i
-                                class="mdi mdi-file-export-outline me-1"></i> Export</a>
-                        <a href="{{ route('add.product') }}"
-                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                class="mdi mdi-plus me-1"></i> Add Product</a>
-
-                    </div>
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-outline me-1"></i> All Product</h4>
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">{{ config('app.name') }}</a></li>
+                        <li class="breadcrumb-item active">{{ $title }}</li>
+                    </ol>
                 </div>
+                <h4 class="page-title"><i class="mdi mdi-barcode me-1"></i> {{ $title }}</h4>
             </div>
         </div>
-        <!-- end page title -->
+    </div>
+    <!-- end page title -->
 
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
+    <div class="row">
+        <div class="col-lg-6 col-xl-6">
+            <div class="card text-center">
+                <div class="card-body">
 
+
+
+                </div>
+            </div> <!-- end card -->
+
+        </div> <!-- end col-->
+
+        <div class="col-lg-6 col-xl-6">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div class="tab-pane" id="settings" role="tabpanel">
 
                         <table id="basic-datatable" class="table dt-responsive nowrap w-100">
                             <thead>
@@ -61,14 +61,10 @@ return number_format($angka, 0, ',', '.');
                                     <th width="5%">No</th>
                                     <th>Image</th>
                                     <th>Name</th>
-                                    <th>Category</th>
-                                    <th>Supplier</th>
-                                    <th>Code</th>
-                                    <th>Price</th>
                                     <th class="text-center">Action</th>
+
                                 </tr>
                             </thead>
-
 
                             <tbody>
 
@@ -81,42 +77,46 @@ return number_format($angka, 0, ',', '.');
                                             alt="">
                                     </td>
                                     <td>{{ $item->product_name }}</td>
-                                    <td>{{ $item->category->category_name }}</td>
-                                    <td>{{ $item->supplier->name }}</td>
-                                    <td>{{ $item->product_code }}</td>
-                                    <td>Rp. {{ format_uang($item->selling_price) }}</td>
-                                    <td class="text-center " id="tooltip-container">
-                                        <a href="{{ route('edit.product', $item->id) }}"
-                                            class="btn btn-primary rounded-pill waves-effect waves-light"
+                                    <td class="text-center" id="tooltip-container">
+                                        <a href="#" class="btn btn-primary rounded-pill waves-effect waves-light"
                                             data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="Edit"><i class="fas fa-pencil-alt"></i>
-                                        </a> &nbsp;
-                                        <a href="{{ route('barcode.product', $item->id) }}"
-                                            class="btn btn-info rounded-pill waves-effect waves-light"
-                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="Product Barcode"><i
-                                                class="fas fa-barcode"></i></a> &nbsp;
-                                        <a href="{{ route('delete.product', $item->id) }}"
-                                            class="btn btn-danger rounded-pill waves-effect waves-light"
-                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="Delete" id="delete"><i
-                                                class="fas fa-trash-alt "></i>
+                                            data-bs-placement="bottom" title="Edit"><i class="fas fa-plus"></i>
                                         </a>
                                     </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
 
-                    </div> <!-- end card body-->
-                </div> <!-- end card -->
-            </div><!-- end col-->
-        </div>
-        <!-- end row-->
+                    </div>
+                    <!-- end settings content-->
 
+                </div>
+            </div> <!-- end card-->
+
+        </div> <!-- end col -->
     </div>
-</div>
+    <!-- end row-->
 
+</div> <!-- container -->
+
+
+<script>
+    $(document).ready(function() {
+        $('#image').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        })
+    })
+</script>
+
+
+
+@endsection
 
 
 @push('scripts')
@@ -144,4 +144,3 @@ return number_format($angka, 0, ',', '.');
 <!-- Datatables init -->
 <script src="{{ asset('backend') }}/assets/js/pages/datatables.init.js"></script>
 @endpush
-@endsection
