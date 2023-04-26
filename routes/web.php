@@ -135,6 +135,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/add/expense', 'addExpense')->name('add.expense');
         Route::post('/store/expense', 'storeExpense')->name('expense.store');
         Route::get('/today/expense', 'todayExpense')->name('today.expense');
+        Route::get('/edit/expense/{id}', 'editExpense')->name('edit.expense');
+        Route::post('/update/expense', 'updateExpense')->name('expense.update');
     });
 });
 

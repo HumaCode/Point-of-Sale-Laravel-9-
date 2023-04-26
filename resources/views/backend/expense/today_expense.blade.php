@@ -81,12 +81,9 @@ return number_format($angka, 0, ',', '.');
                                     <td>{{ $item->month }}</td>
                                     <td>{{ $item->year }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('edit.customer', $item->id) }}"
+                                        <a href="{{ route('edit.expense', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
-                                        <a href="{{ route('delete.customer', $item->id) }}"
-                                            class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
-                                                class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                                class="mdi mdi-pencil me-1"></i> Edit</a>
                                     </td>
                                 </tr><i @endforeach </tbody>
                         </table>
