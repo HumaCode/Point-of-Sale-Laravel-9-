@@ -14,8 +14,8 @@
 @endpush
 
 @php
-$date = date('d-m-Y');
-$expense = App\Models\Expense::where('date', $date)->sum('amount');
+$year = date('Y');
+$expense = App\Models\Expense::where('year', $year)->sum('amount');
 
 function format_uang($angka)
 {
@@ -42,7 +42,7 @@ return number_format($angka, 0, ',', '.');
                                 class="mdi mdi-plus me-1"></i> Add Expense</a>
 
                     </div>
-                    <h4 class="page-title"><i class="mdi mdi-account-multiple-outline me-1"></i> Today Expense</h4>
+                    <h4 class="page-title"><i class="mdi mdi-account-multiple-outline me-1"></i> Year Expense</h4>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@ return number_format($angka, 0, ',', '.');
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="header-title">Todat Expense</h4>
+                        <h4 class="header-title">Year Expense</h4>
                         <h4 style="color:white; font-size: 30px;" align="center">Total : Rp. {{ format_uang($expense) }}
                         </h4>
 
@@ -64,28 +64,22 @@ return number_format($angka, 0, ',', '.');
                                     <th>Details</th>
                                     <th>Amount</th>
                                     <th>Month</th>
-                                    <th>Year</th>
-                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
 
 
                             <tbody>
 
-                                @foreach ($today as $key => $item)
+                                @foreach ($yearexpense as $key => $item)
 
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->details }}</td>
                                     <td>Rp. {{ format_uang($item->amount) }}</td>
                                     <td>{{ $item->month }}</td>
-                                    <td>{{ $item->year }}</td>
-                                    <td class="text-center">
-                                        <a href="{{ route('edit.expense', $item->id) }}"
-                                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                                class="mdi mdi-pencil me-1"></i> Edit</a>
-                                    </td>
+
                                 </tr>
+
                                 @endforeach
                             </tbody>
                         </table>

@@ -137,6 +137,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/today/expense', 'todayExpense')->name('today.expense');
         Route::get('/edit/expense/{id}', 'editExpense')->name('edit.expense');
         Route::post('/update/expense', 'updateExpense')->name('expense.update');
+
+
+        Route::get('/month/expense', 'monthExpense')->name('month.expense');
+        Route::get('/year/expense', 'yearExpense')->name('year.expense');
     });
 });
 
