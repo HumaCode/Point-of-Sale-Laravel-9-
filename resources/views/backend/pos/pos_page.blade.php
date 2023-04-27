@@ -16,6 +16,12 @@
 <!-- third party css end -->
 @endpush
 
+@php
+function format_uang($angka)
+{
+return number_format($angka, 0, ',', '.');
+}
+@endphp
 
 <!-- Start Content-->
 <div class="container-fluid">
@@ -46,7 +52,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>QTY</th>
+                                    <th width="30%">QTY</th>
                                     <th>Price</th>
                                     <th>Subtotal</th>
                                     <th>Action</th>
@@ -64,15 +70,20 @@
                                 <tr>
                                     <td width="50">{{ $item->name }}</td>
                                     <td>
-                                        <div class="input-group">
-                                            <input type="number" min="1" class="form-control" value="{{ $item->qty }}"
-                                                style="width: 50px;">
-                                            <button class="btn input-group-text btn-success waves-effect waves-light"
-                                                type="button"><i class="fas fa-check"></i></button>
-                                        </div>
+                                        <form action="{{ url('/cart-update/' . $item->rowId) }}" method="post">
+                                            @csrf
+                                            <div class="input-group">
+
+                                                <input type="number" min="1" name="qty" class="form-control"
+                                                    value="{{ $item->qty }}">
+                                                <button
+                                                    class="btn input-group-text btn-success waves-effect waves-light"
+                                                    type="submit"><i class="fas fa-check"></i></button>
+                                            </div>
+                                        </form>
                                     </td>
-                                    <td>{{ $item->price }}</td>
-                                    <td>{{ $item->price * $item->qty }}</td>
+                                    <td>Rp. {{ format_uang($item->price) }}</td>
+                                    <td>Rp. {{ format_uang($item->price * $item->qty) }}</td>
                                     <td>
                                         <a href="" class="text-white"><i class="fas fa-trash-alt"></i></a>
                                     </td>
@@ -87,12 +98,12 @@
 
                     <div class="bg-primary">
                         <br>
-                        <p style="font-size: 18px; color:#fff;"> Quantity : 902309239</p>
-                        <p style="font-size: 18px; color:#fff;"> SubTotal : 902309239</p>
-                        <p style="font-size: 18px; color:#fff;"> Vat : 902309239</p>
+                        <p style="font-size: 18px; color:#fff;"> Quantity : {{ Cart::count() }}</p>
+                        <p style="font-size: 18px; color:#fff;"> SubTotal : {{ Cart::subtotal() }}</p>
+                        <p style="font-size: 18px; color:#fff;"> Vat : {{ Cart::tax() }}</p>
                         <p>
                         <h2 class="text-white">Total :</h2>
-                        <h1 class="text-white">902309239</h1>
+                        <h1 class="text-white">{{ Cart::total() }}</h1>
                         </p>
                         <br>
                     </div>
