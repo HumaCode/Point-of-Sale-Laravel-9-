@@ -144,19 +144,28 @@
                                 @foreach ($product as $key => $item)
 
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>
-                                        <img src="{{ asset($item->product_image) }}" style="width: 50px; height: 40px;"
-                                            alt="">
-                                    </td>
-                                    <td>{{ $item->product_name }}</td>
-                                    <td class="text-center" id="tooltip-container">
-                                        <a href="#" class="btn btn-primary rounded-pill waves-effect waves-light"
-                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
-                                            data-bs-placement="bottom" title="Edit"><i class="fas fa-plus"></i>
-                                        </a>
-                                    </td>
+                                    <form action="{{ url('/add-cart') }}" method="post">
+                                        @csrf
 
+                                        <input type="hidden" name="id" value="{{ $item->id }}">
+                                        <input type="hidden" name="name" value="{{ $item->product_name }}">
+                                        <input type="hidden" name="qty" value="1">
+                                        <input type="hidden" name="price" value="{{ $item->selling_price }}">
+
+                                        <td>{{ $key+1 }}</td>
+                                        <td>
+                                            <img src="{{ asset($item->product_image) }}"
+                                                style="width: 50px; height: 40px;" alt="">
+                                        </td>
+                                        <td>{{ $item->product_name }}</td>
+                                        <td class="text-center" id="tooltip-container">
+                                            <button type="submit"
+                                                class="btn btn-primary rounded-pill waves-effect waves-light"
+                                                data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Submit"><i class="fas fa-plus"></i>
+                                            </button>
+                                        </td>
+                                    </form>
                                 </tr>
                                 @endforeach
                             </tbody>
