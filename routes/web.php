@@ -149,6 +149,7 @@ Route::middleware('auth')->group(function () {
     Route::controller(PosController::class)->group(function () {
         Route::get('/pos', 'pos')->name('pos');
         Route::post('/add-cart', 'addCart');
+        Route::get('/all-item', 'allItem');
     });
 });
 

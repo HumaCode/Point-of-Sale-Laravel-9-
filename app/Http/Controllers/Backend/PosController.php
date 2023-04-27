@@ -39,4 +39,12 @@ class PosController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function allItem()
+    {
+        $product_item   = Cart::content();
+        $title          = "Cart";
+
+        return view('backend.pos.text_time', compact('title', 'product_item'));
+    }
 }

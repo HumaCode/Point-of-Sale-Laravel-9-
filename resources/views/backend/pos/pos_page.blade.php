@@ -52,18 +52,34 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
+
+                            @php
+                            $allcart = Gloudemans\Shoppingcart\Facades\Cart::content();
+                            @endphp
+
                             <tbody>
+
+                                @foreach ($allcart as $item)
+
                                 <tr>
-                                    <td>Mark</td>
+                                    <td width="50">{{ $item->name }}</td>
                                     <td>
-                                        <input type="number" min="1" value="0" style="width: 40px;">
+                                        <div class="input-group">
+                                            <input type="number" min="1" class="form-control" value="{{ $item->qty }}"
+                                                style="width: 50px;">
+                                            <button class="btn input-group-text btn-success waves-effect waves-light"
+                                                type="button"><i class="fas fa-check"></i></button>
+                                        </div>
                                     </td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
+                                    <td>{{ $item->price }}</td>
+                                    <td>{{ $item->price * $item->qty }}</td>
                                     <td>
                                         <a href="" class="text-white"><i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
+
+                                @endforeach
+
 
                             </tbody>
                         </table>
