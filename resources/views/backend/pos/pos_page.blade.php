@@ -67,6 +67,7 @@ return number_format($angka, 0, ',', '.');
 
                                 @foreach ($allcart as $item)
 
+
                                 <tr>
                                     <td width="50">{{ $item->name }}</td>
                                     <td>
@@ -84,13 +85,15 @@ return number_format($angka, 0, ',', '.');
                                     </td>
                                     <td>Rp. {{ format_uang($item->price) }}</td>
                                     <td>Rp. {{ format_uang($item->price * $item->qty) }}</td>
-                                    <td>
-                                        <a href="" class="text-white"><i class="fas fa-trash-alt"></i></a>
+                                    <td id="tooltip-container">
+                                        <a href="{{ url('/cart-delete/' . $item->rowId) }}" class="text-white"
+                                            data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" title="Hapus" id="delete"><i
+                                                class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
 
                                 @endforeach
-
 
                             </tbody>
                         </table>
@@ -105,6 +108,7 @@ return number_format($angka, 0, ',', '.');
                         <h2 class="text-white">Total :</h2>
                         <h1 class="text-white">{{ Cart::total() }}</h1>
                         </p>
+
                         <br>
                     </div>
 
@@ -232,7 +236,30 @@ return number_format($angka, 0, ',', '.');
 
 {{-- sweetalert --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="{{ asset('backend') }}/assets/js/code.js"></script>
+
+<script>
+    $(function () {
+    $(document).on("click", "#delete", function (e) {
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Delete This Product?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link;
+                Swal.fire("Deleted!", "Your product has been deleted.", "success");
+            }
+        });
+    });
+});
+</script>
 
 <!-- third party js -->
 <script src="{{ asset('backend') }}/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>

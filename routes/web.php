@@ -151,6 +151,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/add-cart', 'addCart');
         Route::get('/all-item', 'allItem');
         Route::post('/cart-update/{rowId}', 'cartUpdate');
+        Route::get('/cart-delete/{rowId}', 'cartDelete');
     });
 });
 
