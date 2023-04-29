@@ -1,6 +1,13 @@
 @extends('admin_dashboard')
 
 
+@php
+function format_uang($angka)
+{
+return number_format($angka, 0, ',', '.');
+}
+@endphp
+
 @section('admin')
 
 <div class="container-fluid">
@@ -11,12 +18,11 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">UBold</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Extra Pages</a></li>
-                        <li class="breadcrumb-item active">Invoice</li>
+                        <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Poin Of Sale</a></li>
+                        <li class="breadcrumb-item active">{{ $title }}</li>
                     </ol>
                 </div>
-                <h4 class="page-title">Invoice</h4>
+                <h4 class="page-title">{{ $title }}</h4>
             </div>
         </div>
     </div>
@@ -32,13 +38,15 @@
                             <div class="auth-logo">
                                 <div class="logo logo-dark">
                                     <span class="logo-lg">
-                                        <img src="assets/images/logo-dark.png" alt="" height="22">
+                                        <img src="{{ asset('backend') }}/assets/images/logo-dark.png" alt=""
+                                            height="22">
                                     </span>
                                 </div>
 
                                 <div class="logo logo-light">
                                     <span class="logo-lg">
-                                        <img src="assets/images/logo-light.png" alt="" height="22">
+                                        <img src="{{ asset('backend') }}/assets/images/logo-light.png" alt=""
+                                            height="22">
                                     </span>
                                 </div>
                             </div>
@@ -51,10 +59,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mt-3">
-                                <p><b>Hello, Stanley Jones</b></p>
-                                <p class="text-muted">Thanks a lot because you keep purchasing our products. Our company
-                                    promises to provide high quality products for you as well as outstanding
-                                    customer service for every transaction. </p>
+                                <p><b>Hello, {{ $customer->name }}</b></p>
                             </div>
 
                         </div><!-- end col -->
@@ -64,7 +69,7 @@
                                         17, 2016</span></p>
                                 <p><strong>Order Status : </strong> <span class="float-end"><span
                                             class="badge bg-danger">Unpaid</span></span></p>
-                                <p><strong>Order No. : </strong> <span class="float-end">000028 </span></p>
+                                <p><strong>Invoice No. : </strong> <span class="float-end">000028 </span></p>
                             </div>
                         </div><!-- end col -->
                     </div>
@@ -74,20 +79,11 @@
                         <div class="col-sm-6">
                             <h6>Billing Address</h6>
                             <address>
-                                Stanley Jones<br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</abbr> (123) 456-7890
-                            </address>
-                        </div> <!-- end col -->
-
-                        <div class="col-sm-6">
-                            <h6>Shipping Address</h6>
-                            <address>
-                                Stanley Jones<br>
-                                795 Folsom Ave, Suite 600<br>
-                                San Francisco, CA 94107<br>
-                                <abbr title="Phone">P:</abbr> (123) 456-7890
+                                {{ $customer->address }} - {{ $customer->city }}
+                                <br>
+                                <abbr title="Shop Name">Shop Name:</abbr> {{ $customer->shopname }} <br>
+                                <abbr title="Phone">Phone:</abbr> {{ $customer->phone }} <br>
+                                <abbr title="Email">Email:</abbr> {{ $customer->email }} <br>
                             </address>
                         </div> <!-- end col -->
                     </div>
@@ -101,32 +97,28 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Item</th>
-                                            <th style="width: 10%">Hours</th>
-                                            <th style="width: 10%">Hours Rate</th>
+                                            <th style="width: 10%">QTY</th>
+                                            <th style="width: 10%">Unit Cost</th>
                                             <th style="width: 10%" class="text-end">Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+
+                                        @php
+                                        $i =1;
+                                        @endphp
+                                        @foreach ($contents as $key => $item)
                                         <tr>
-                                            <td>1</td>
+                                            <td>{{ $i++ }}</td>
                                             <td>
-                                                <b>Web Design</b> <br>
-                                                2 Pages static website - my website
+                                                <b>{{ $item->name }}</b> <br>
                                             </td>
-                                            <td>22</td>
-                                            <td>$30</td>
-                                            <td class="text-end">$660.00</td>
+                                            <td>{{ $item->qty }}</td>
+                                            <td>Rp. {{ format_uang($item->price) }}</td>
+                                            <td class="text-end">Rp. {{ format_uang($item->price * $item->qty) }}</td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>
-                                                <b>Software Development</b> <br>
-                                                Invoice editor software - AB'c Software
-                                            </td>
-                                            <td>112.5</td>
-                                            <td>$35</td>
-                                            <td class="text-end">$3937.50</td>
-                                        </tr>
+                                        @endforeach
+
 
                                     </tbody>
                                 </table>
@@ -151,9 +143,10 @@
                         </div> <!-- end col -->
                         <div class="col-sm-6">
                             <div class="float-end">
-                                <p><b>Sub-total:</b> <span class="float-end">$4597.50</span></p>
-                                <p><b>Discount (10%):</b> <span class="float-end"> &nbsp;&nbsp;&nbsp; $459.75</span></p>
-                                <h3>$4137.75 USD</h3>
+                                <p><b>Sub-total : </b> <span class="float-end"> Rp. {{ Cart::subtotal() }}</span></p>
+                                <p><b>Vat (21%) : </b> <span class="float-end"> &nbsp;&nbsp;&nbsp; Rp. {{ Cart::tax()
+                                        }}</span></p>
+                                <h3>Rp. {{ Cart::total() }}</h3>
                             </div>
                             <div class="clearfix"></div>
                         </div> <!-- end col -->

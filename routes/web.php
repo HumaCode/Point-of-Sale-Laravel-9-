@@ -152,7 +152,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/all-item', 'allItem');
         Route::post('/cart-update/{rowId}', 'cartUpdate');
         Route::get('/cart-delete/{rowId}', 'cartDelete');
-        Route::get('/create-invoice', 'createInvoice');
+        Route::post('/create-invoice', 'createInvoice');
     });
 });
 
