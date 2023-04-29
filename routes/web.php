@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\Backend\ExpenseController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PosController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SalaryController;
@@ -153,6 +154,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/cart-update/{rowId}', 'cartUpdate');
         Route::get('/cart-delete/{rowId}', 'cartDelete');
         Route::post('/create-invoice', 'createInvoice');
+    });
+
+
+    // Order
+    Route::controller(OrderController::class)->group(function () {
+        Route::post('/final-invoice', 'finalInvoice');
     });
 });
 

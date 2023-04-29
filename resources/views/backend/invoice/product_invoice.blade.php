@@ -182,12 +182,20 @@ return number_format($angka, 0, ',', '.');
                     </div>
                 </div>
 
-                <form class="px-3" action="{{ route('category.store') }}" method="post">
+                <form class="px-3" action="{{ url('/final-invoice') }}" method="post">
                     @csrf
 
+                    <input type="hidden" name="customer_id" value="{{ $customer->id }}">
+                    <input type="hidden" name="order_date" value="{{ date('d-F-Y') }}">
+                    <input type="hidden" name="order_status" value="pending">
+                    <input type="hidden" name="total_product" value="{{ Cart::count() }}">
+                    <input type="hidden" name="sub_total" value="{{ Cart::subtotal() }}">
+                    <input type="hidden" name="vat" value="{{ Cart::tax() }}">
+                    <input type="hidden" name="total" value="{{ Cart::total() }}">
+
                     <div class="mb-3">
-                        <label for="payment" class="form-label">Payment</label>
-                        <select name="payment" id="payment" class="form-control" required>
+                        <label for="payment_status" class="form-label">Payment</label>
+                        <select name="payment_status" id="payment_status" class="form-control" required>
                             <option selected disabled>-- Select --</option>
                             <option value="HandCash">HandCash</option>
                             <option value="cheque">cheque</option>
@@ -197,14 +205,13 @@ return number_format($angka, 0, ',', '.');
                     </div>
 
                     <div class="mb-3">
-                        <label for="pay_now" class="form-label">Pay Now</label>
-                        <input class="form-control" type="text" name="pay_now" id="pay_now" required=""
-                            placeholder="Pay Now">
+                        <label for="pay" class="form-label">Pay Now</label>
+                        <input class="form-control" type="text" name="pay" id="pay" required="" placeholder="Pay Now">
                     </div>
 
                     <div class="mb-3">
-                        <label for="due_amount" class="form-label">Due Amount</label>
-                        <input class="form-control" type="text" name="due_amount" id="due_amount" required=""
+                        <label for="due" class="form-label">Due Amount</label>
+                        <input class="form-control" type="text" name="due" id="due" required=""
                             placeholder="Due Amount">
                     </div>
 
