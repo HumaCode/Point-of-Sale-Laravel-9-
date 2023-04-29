@@ -114,14 +114,15 @@ return number_format($angka, 0, ',', '.');
 
                     <hr>
 
-                    <form action="">
+                    <form action="{{ url('/create-invoice') }}" method="post" id="myForm">
+                        @csrf
 
                         <label for="customer" class="form-label">All Customer</label>
 
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-lg-12">
                                 <div class="form-group mt-2">
-                                    <select name="customer" id="customer" class="form-control ">
+                                    <select name="customer_id" id="customer_id" class="form-control ">
                                         <option disabled selected>-- Select --</option>
 
                                         @foreach ($customer as $item)
@@ -132,15 +133,10 @@ return number_format($angka, 0, ',', '.');
 
                                 </div>
                             </div>
-                            <div class="col-lg-4 mt-">
-
-                                <button type="submit" class="btn btn-blue waves-effect waves-light mt-2"><i
-                                        class="mdi mdi-plus"></i> Add Customer</button>
-                            </div>
                         </div>
 
 
-                        <div class="text-end">
+                        <div class="text-center">
                             <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
                                     class="fas fa-file-invoice-dollar"></i> Create Invoice</button>
                         </div>
@@ -259,6 +255,35 @@ return number_format($angka, 0, ',', '.');
         });
     });
 });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('#myForm').validate({
+            rules: {
+                customer_id: {
+                    required : true,
+                }, 
+            },
+            messages :{
+                customer_id: {
+                    required : 'Please Select Customer',
+                },
+            },
+            errorElement : 'span', 
+            errorPlacement: function (error,element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight : function(element, errorClass, validClass){
+                $(element).addClass('is-invalid');
+            },
+            unhighlight : function(element, errorClass, validClass){
+                $(element).removeClass('is-invalid');
+            },
+        });
+    });
+    
 </script>
 
 <!-- third party js -->
