@@ -157,7 +157,9 @@ return number_format($angka, 0, ',', '.');
                         <div class="text-end d-print-none">
                             <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light"><i
                                     class="mdi mdi-printer me-1"></i> Print</a>
-                            <a href="#" class="btn btn-info waves-effect waves-light">Submit</a>
+                            <button type="button" class="btn btn-info waves-effect waves-light" data-bs-toggle="modal"
+                                data-bs-target="#signup-modal"><i class="mdi mdi-barcode me-1"></i>
+                                Create Invoice</button>
                         </div>
                     </div>
                 </div>
@@ -167,5 +169,55 @@ return number_format($angka, 0, ',', '.');
     <!-- end row -->
 
 </div>
+
+<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="text-center mt-2 mb-4">
+                    <div class="auth-logo">
+                        <h3>Invoice Of {{ $customer->name }}</h3>
+                        <h3>Total Amount Rp. {{ Cart::total() }}</h3>
+                    </div>
+                </div>
+
+                <form class="px-3" action="{{ route('category.store') }}" method="post">
+                    @csrf
+
+                    <div class="mb-3">
+                        <label for="payment" class="form-label">Payment</label>
+                        <select name="payment" id="payment" class="form-control" required>
+                            <option selected disabled>-- Select --</option>
+                            <option value="HandCash">HandCash</option>
+                            <option value="cheque">cheque</option>
+                            <option value="Due">Due</option>
+                        </select>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="pay_now" class="form-label">Pay Now</label>
+                        <input class="form-control" type="text" name="pay_now" id="pay_now" required=""
+                            placeholder="Pay Now">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="due_amount" class="form-label">Due Amount</label>
+                        <input class="form-control" type="text" name="due_amount" id="due_amount" required=""
+                            placeholder="Due Amount">
+                    </div>
+
+
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-primary" type="submit">Complete Order</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 @endsection
