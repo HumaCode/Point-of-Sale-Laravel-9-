@@ -163,6 +163,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/pending/order', 'pendingOrder')->name('pending.order');
         Route::get('/detail/order/{order_id}', 'detailOrder')->name('order.detail');
         Route::post('/order/status/update', 'orderStatusUpdate')->name('order.status.update');
+
+        Route::get('/complete/order', 'completeOrder')->name('complete.order');
     });
 });
 

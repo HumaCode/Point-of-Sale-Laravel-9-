@@ -84,4 +84,12 @@ class OrderController extends Controller
 
         return redirect()->route('pending.order')->with($notification);
     }
+
+    public function completeOrder()
+    {
+        $orders = Order::where('order_status', 'complete')->get();
+        $title  = "Complete Order";
+
+        return view('backend.order.complete_order', compact('title', 'orders'));
+    }
 }
