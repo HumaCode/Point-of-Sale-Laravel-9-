@@ -68,4 +68,20 @@ class OrderController extends Controller
 
         return view('backend.order.order_details', compact('title', 'order', 'orderItem'));
     }
+
+    public function orderStatusUpdate(Request $request)
+    {
+        $order_id = $request->id;
+
+        Order::findOrFail($order_id)->update([
+            'order_status' => 'complete',
+        ]);
+
+        $notification = array(
+            'message'       => 'Order Done',
+            'alert-type'    => 'success',
+        );
+
+        return redirect()->route('pending.order')->with($notification);
+    }
 }

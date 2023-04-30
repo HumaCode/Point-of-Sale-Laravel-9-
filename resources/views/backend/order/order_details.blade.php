@@ -30,9 +30,10 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form method="post" action="{{ route('customer.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('order.status.update') }}" enctype="multipart/form-data">
                             @csrf
 
+                            <input type="hidden" name="id" value="{{ $order->id }}">
 
                             <div class="row">
                                 <div class="col-md-6">
@@ -120,6 +121,50 @@
                         </form>
                     </div>
                     <!-- end settings content-->
+
+
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+
+                                <table class="table dt-responsive nowrap w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>Image</th>
+                                            <th>Product Name</th>
+                                            <th>Product Code</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Total (+vat)</th>
+                                        </tr>
+                                    </thead>
+
+
+                                    <tbody>
+
+                                        @foreach ($orderItem as $item)
+
+                                        <tr>
+                                            <td>
+                                                <img src="{{ asset($item->product->product_image) }}"
+                                                    style="width: 50px; height: 40px;" alt="">
+                                            </td>
+                                            <td>{{ $item->product->product_name }}</td>
+                                            <td>{{ $item->product->product_code }}</td>
+                                            <td>{{ $item->quantity }}</td>
+                                            <td>{{ $item->product->selling_price }}</td>
+                                            <td>{{ $item->total }}</td>
+                                            <td><span class="badge bg-danger">{{ $item->order_status }}</span></td>
+
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+                            </div> <!-- end card body-->
+                        </div> <!-- end card -->
+                    </div><!-- end col-->
 
                 </div>
             </div> <!-- end card-->

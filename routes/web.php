@@ -162,6 +162,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/final-invoice', 'finalInvoice');
         Route::get('/pending/order', 'pendingOrder')->name('pending.order');
         Route::get('/detail/order/{order_id}', 'detailOrder')->name('order.detail');
+        Route::post('/order/status/update', 'orderStatusUpdate')->name('order.status.update');
     });
 });
 
