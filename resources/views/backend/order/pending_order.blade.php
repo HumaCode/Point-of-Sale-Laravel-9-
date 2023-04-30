@@ -71,7 +71,7 @@
                                     <td>{{ $item->pay }}</td>
                                     <td><span class="badge bg-danger">{{ $item->order_status }}</span></td>
                                     <td class="text-center">
-                                        <a href="{{ route('edit.customer', $item->id) }}"
+                                        <a href="{{ route('order.detail', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-eye me-1"></i> Detail</a>
                                     </td>
