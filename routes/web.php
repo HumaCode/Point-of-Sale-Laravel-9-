@@ -165,6 +165,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/order/status/update', 'orderStatusUpdate')->name('order.status.update');
 
         Route::get('/complete/order', 'completeOrder')->name('complete.order');
+
+        Route::get('/stock', 'stockManage')->name('stock.manage');
     });
 });
 

@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Orderdetails;
+use App\Models\Product;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -73,6 +75,15 @@ class OrderController extends Controller
     {
         $order_id = $request->id;
 
+        // update stock in store
+        $product  = Orderdetails::where('order_id', $order_id)->get();
+        foreach ($product as $item) {
+            Product::where('id', $item->product_id)
+                ->update([
+                    'product_store' => DB::raw('product_store-' . $item->quantity)
+                ]);
+        }
+
         Order::findOrFail($order_id)->update([
             'order_status' => 'complete',
         ]);
@@ -91,5 +102,13 @@ class OrderController extends Controller
         $title  = "Complete Order";
 
         return view('backend.order.complete_order', compact('title', 'orders'));
+    }
+
+    public function stockManage()
+    {
+        $product    = Product::latest()->get();
+        $title      = "Stock Management";
+
+        return view('backend.stock.all_stock', compact('title', 'product'));
     }
 }
