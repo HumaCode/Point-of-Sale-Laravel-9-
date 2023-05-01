@@ -167,6 +167,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/complete/order', 'completeOrder')->name('complete.order');
 
         Route::get('/stock', 'stockManage')->name('stock.manage');
+        Route::get('/order/invoice-download/{order_id}', 'orderInvoice');
     });
 });
 

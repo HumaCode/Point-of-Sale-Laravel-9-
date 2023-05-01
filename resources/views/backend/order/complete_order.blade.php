@@ -71,7 +71,7 @@
                                     <td>{{ $item->pay }}</td>
                                     <td><span class="badge bg-success">{{ $item->order_status }}</span></td>
                                     <td class="text-center">
-                                        <a href="{{ route('order.detail', $item->id) }}"
+                                        <a href="{{ url('order/invoice-download', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-eye me-1"></i> PDF Invoice</a>
                                     </td>
