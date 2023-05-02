@@ -26,7 +26,7 @@ class RoleController extends Controller
 
     public function storePermission(Request $request)
     {
-        $role = Permission::create([
+        Permission::create([
             'name'          => $request->name,
             'group_name'    => $request->group_name,
         ]);
@@ -74,5 +74,38 @@ class RoleController extends Controller
         );
 
         return redirect()->route('all.permission')->with($notification);
+    }
+
+
+
+    /////////////////////////// -- Role -- /////////////////////
+
+    public function allRoles()
+    {
+        $roles          = Role::all();
+        $title          = "Roles";
+
+        return view('backend.pages.roles.all_roles', compact('title', 'roles'));
+    }
+
+    public function addRoles()
+    {
+        $title          = "Add Roles";
+
+        return view('backend.pages.roles.add_roles', compact('title'));
+    }
+
+    public function storeRoles(Request $request)
+    {
+        Role::create([
+            'name' => $request->name,
+        ]);
+
+        $notification = array(
+            'message'       => 'Roles Added Successfull',
+            'alert-type'    => 'success',
+        );
+
+        return redirect()->route('all.roles')->with($notification);
     }
 }

@@ -172,11 +172,22 @@ Route::middleware('auth')->group(function () {
     });
 
 
-    // Role
+    // Route Permission
     Route::controller(RoleController::class)->group(function () {
         Route::get('/all/permission', 'allPermission')->name('all.permission');
         Route::get('/add/permission', 'addPermission')->name('add.permission');
         Route::post('/store/permission', 'storePermission')->name('permission.store');
+        Route::get('/edit/permission/{id}', 'editPermission')->name('edit.permission');
+        Route::post('/update/permission', 'updatePermission')->name('permission.update');
+        Route::get('/delete/permission/{id}', 'deletePermission')->name('delete.permission');
+    });
+
+
+    // Role
+    Route::controller(RoleController::class)->group(function () {
+        Route::get('/all/roles', 'allRoles')->name('all.roles');
+        Route::get('/add/roles', 'addRoles')->name('add.roles');
+        Route::post('/store/roles', 'storeRoles')->name('roles.store');
         Route::get('/edit/permission/{id}', 'editPermission')->name('edit.permission');
         Route::post('/update/permission', 'updatePermission')->name('permission.update');
         Route::get('/delete/permission/{id}', 'deletePermission')->name('delete.permission');
