@@ -60,7 +60,7 @@
                                         <a href="{{ route('admin.edit.roles', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
-                                        <a href="{{ route('delete.permission', $item->id) }}"
+                                        <a href="{{ route('admin.delete.roles', $item->id) }}"
                                             class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
                                                 class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
                                     </td>
@@ -77,6 +77,34 @@
 </div>
 
 
-
-
 @endsection
+
+@push('scripts')
+{{-- sweetalert --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    $(function () {
+    $(document).on("click", "#delete", function (e) {
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Delete This Roles?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link;
+                Swal.fire("Deleted!", "This roles has been deleted.", "success");
+            }
+        });
+    });
+});
+</script>
+
+@endpush
