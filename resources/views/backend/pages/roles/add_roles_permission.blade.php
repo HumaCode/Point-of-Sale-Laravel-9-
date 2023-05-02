@@ -37,14 +37,14 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form id="myForm" method="post" action="{{ route('permission.store') }}">
+                        <form id="myForm" method="post" action="{{ route('role.permission.store') }}">
                             @csrf
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="roles" class="form-label">All Roles</label>
-                                        <select name="roles" id="roles" class="form-control ">
+                                        <label for="role_id" class="form-label">All Roles</label>
+                                        <select name="role_id" id="role_id" class="form-control ">
                                             <option disabled selected>-- Select --</option>
 
                                             @foreach ($roles as $role)
