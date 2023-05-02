@@ -57,7 +57,7 @@
 
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('edit.permission', $item->id) }}"
+                                        <a href="{{ route('admin.edit.roles', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
                                         <a href="{{ route('delete.permission', $item->id) }}"
