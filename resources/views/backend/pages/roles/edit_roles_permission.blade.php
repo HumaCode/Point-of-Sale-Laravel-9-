@@ -37,7 +37,7 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form id="myForm" method="post" action="{{ route('role.permission.store') }}">
+                        <form id="myForm" method="post" action="{{ route('role.permission.update', $roles->id) }}">
                             @csrf
 
                             <div class="row">
@@ -102,7 +102,7 @@
 
                             <div class="text-end">
                                 <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
-                                        class="mdi mdi-content-save"></i> Save</button>
+                                        class="mdi mdi-content-save"></i> Update</button>
                             </div>
                         </form>
                     </div>

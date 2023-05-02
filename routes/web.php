@@ -201,6 +201,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/all/roles/permission', 'allRolesPermission')->name('all.roles.permission');
 
         Route::get('/admin/edit/roles/{id}', 'adminEditRoles')->name('admin.edit.roles');
+        Route::post('/role/permission/update/{id}', 'rolePermissionUpdate')->name('role.permission.update');
     });
 });
 
