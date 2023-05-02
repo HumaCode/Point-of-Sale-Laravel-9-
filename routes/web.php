@@ -192,6 +192,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/update/roles', 'updateRoles')->name('roles.update');
         Route::get('/delete/roles/{id}', 'deleteRoles')->name('delete.roles');
     });
+
+
+    // add roles inn permission
+    Route::controller(RoleController::class)->group(function () {
+        Route::get('/add/roles/permission', 'addRolesPermission')->name('add.roles.permission');
+    });
 });
 
 require __DIR__ . '/auth.php';
