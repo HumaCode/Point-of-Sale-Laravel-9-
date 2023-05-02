@@ -188,9 +188,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/all/roles', 'allRoles')->name('all.roles');
         Route::get('/add/roles', 'addRoles')->name('add.roles');
         Route::post('/store/roles', 'storeRoles')->name('roles.store');
-        Route::get('/edit/permission/{id}', 'editPermission')->name('edit.permission');
-        Route::post('/update/permission', 'updatePermission')->name('permission.update');
-        Route::get('/delete/permission/{id}', 'deletePermission')->name('delete.permission');
+        Route::get('/edit/roles/{id}', 'editRoles')->name('edit.roles');
+        Route::post('/update/roles', 'updateRoles')->name('roles.update');
+        Route::get('/delete/roles/{id}', 'deleteRoles')->name('delete.roles');
     });
 });
 
