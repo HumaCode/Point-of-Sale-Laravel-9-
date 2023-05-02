@@ -2,6 +2,14 @@
 
 @section('admin')
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<style>
+    .form-check-label {
+        text-transform: capitalize;
+    }
+</style>
+
 
 <!-- Start Content-->
 <div class="container-fluid">
@@ -109,5 +117,15 @@
     <!-- end row-->
 
 </div> <!-- container -->
+
+<script>
+    $('#customckeck1').click(function() {
+        if($(this).is(':checked')) {
+            $('input[type = checkbox]').prop('checked', true);
+        }else{
+            $('input[type = checkbox]').prop('checked', false);
+        }
+    });
+</script>
 
 @endsection
