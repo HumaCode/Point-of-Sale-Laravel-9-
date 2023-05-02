@@ -48,8 +48,7 @@
                                     </div>
 
                                     <div class="form-check mb-2 form-check-primary">
-                                        <input class="form-check-input" type="checkbox" value="" id="customckeck1"
-                                            checked="">
+                                        <input class="form-check-input" type="checkbox" value="" id="customckeck1">
                                         <label class="form-check-label" for="customckeck1">Primary</label>
                                     </div>
                                 </div> <!-- end col -->
@@ -57,22 +56,42 @@
                             </div>
                             <hr>
 
+                            @foreach ($permission_groups as $group)
+
                             <div class="row">
                                 <div class="col-3">
                                     <div class="form-check mb-2 form-check-primary">
-                                        <input class="form-check-input" type="checkbox" value="" id="customckeck2"
-                                            checked="">
-                                        <label class="form-check-label" for="customckeck2">Primary</label>
+                                        <input class="form-check-input" type="checkbox" value=""
+                                            id="{{ $group->group_name }}">
+                                        <label class="form-check-label" for="{{ $group->group_name }}">{{
+                                            $group->group_name
+                                            }}</label>
                                     </div>
                                 </div>
                                 <div class="col-9">
+
+                                    @php
+                                    $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
+                                    @endphp
+
+                                    @foreach ($permissions as $permission)
+
                                     <div class="form-check mb-2 form-check-primary">
-                                        <input class="form-check-input" type="checkbox" value="" id="customckeck3"
-                                            checked="">
-                                        <label class="form-check-label" for="customckeck3">Primary</label>
+                                        <input class="form-check-input" type="checkbox" name="permission[]"
+                                            value="{{ $permission->id }}" id="{{ $permission->name }}">
+                                        <label class="form-check-label" for="{{ $permission->name }}">{{
+                                            $permission->name
+                                            }}</label>
                                     </div>
+
+                                    @endforeach
+                                    <br>
+
                                 </div>
                             </div>
+
+                            @endforeach
+
 
                             <div class="text-end">
                                 <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
