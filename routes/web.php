@@ -204,6 +204,12 @@ Route::middleware('auth')->group(function () {
         Route::post('/role/permission/update/{id}', 'rolePermissionUpdate')->name('role.permission.update');
         Route::get('/admin/delete/roles/{id}', 'adminDeleteRoles')->name('admin.delete.roles');
     });
+
+
+    // admin
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/all/admin', 'allAdmin')->name('all.admin');
+    });
 });
 
 require __DIR__ . '/auth.php';

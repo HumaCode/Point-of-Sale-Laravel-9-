@@ -110,4 +110,15 @@ class AdminController extends Controller
 
         return back()->with($notification);
     }
+
+
+    /////////////////// Admin User All /////////////////////////
+
+    public function allAdmin()
+    {
+        $alladmin = User::latest()->get();
+        $title    = "All Admin";
+
+        return view('backend.admin.all_admin', compact('alladmin', 'title'));
+    }
 }

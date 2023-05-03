@@ -217,6 +217,24 @@
                     </div>
                 </li>
 
+                <li>
+                    <a href="#sidebarAdmin" data-bs-toggle="collapse">
+                        <i class="mdi mdi-cash-usd-outline"></i>
+                        <span> Setting Admin User </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarAdmin">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('all.admin') }}"> All Admin</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('all.admin') }}"> Add Admin</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="menu-title mt-2">Custom</li>
 
                 <li>
