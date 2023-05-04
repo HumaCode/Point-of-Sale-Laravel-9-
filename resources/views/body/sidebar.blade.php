@@ -229,7 +229,7 @@
                                 <a href="{{ route('all.admin') }}"> All Admin</a>
                             </li>
                             <li>
-                                <a href="{{ route('all.admin') }}"> Add Admin</a>
+                                <a href="{{ route('add.admin') }}"> Add Admin</a>
                             </li>
                         </ul>
                     </div>

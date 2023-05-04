@@ -209,6 +209,7 @@ Route::middleware('auth')->group(function () {
     // admin
     Route::controller(AdminController::class)->group(function () {
         Route::get('/all/admin', 'allAdmin')->name('all.admin');
+        Route::get('/add/admin', 'addAdmin')->name('add.admin');
     });
 });
 
