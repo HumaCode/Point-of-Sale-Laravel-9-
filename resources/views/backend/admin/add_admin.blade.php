@@ -30,7 +30,7 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form id="myForm" method="post" action="{{ route('product.store') }}"
+                        <form id="myForm" method="post" action="{{ route('admin.store') }}"
                             enctype="multipart/form-data">
                             @csrf
 
@@ -68,6 +68,7 @@
 
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="roles" class="form-label">Asign Roles</label>
@@ -85,27 +86,7 @@
 
                             </div>
 
-                            <div class="row">
 
-                                <div class="col-md-12">
-                                    <div class="form-group mb-3">
-                                        <label for="photo" class="form-label">Admin Image</label>
-                                        <input type="file" name="photo" id="photo" class="form-control"
-                                            accept=".jpg,.png">
-
-                                    </div>
-                                </div> <!-- end col -->
-
-
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label for="photo" class="form-label"></label>
-                                        <img id="showImage" src="{{ url('upload/noimage.png') }}"
-                                            class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
-                                    </div>
-                                </div> <!-- end col -->
-
-                            </div> <!-- end row -->
 
 
 
@@ -194,15 +175,4 @@
     
 </script>
 
-<script>
-    $(document).ready(function() {
-        $('#product_image').change(function(e) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#showImage').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        })
-    })
-</script>
 @endpush
