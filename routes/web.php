@@ -211,6 +211,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/all/admin', 'allAdmin')->name('all.admin');
         Route::get('/add/admin', 'addAdmin')->name('add.admin');
         Route::post('/admin/store', 'adminStore')->name('admin.store');
+        Route::get('/edit/admin/{id}', 'editAdmin')->name('edit.admin');
+        Route::post('/update/admin', 'updateAdmin')->name('admin.update');
+        Route::get('/delete/admin/{id}', 'deleteAdmin')->name('delete.admin');
     });
 });
 

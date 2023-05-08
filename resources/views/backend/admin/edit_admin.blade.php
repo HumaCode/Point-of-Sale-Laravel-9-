@@ -30,16 +30,17 @@
 
 
                     <div class="tab-pane" id="settings" role="tabpanel">
-                        <form id="myForm" method="post" action="{{ route('admin.store') }}">
+                        <form id="myForm" method="post" action="{{ route('admin.update') }}">
                             @csrf
 
+                            <input type="hidden" name="id" value="{{ $adminuser->id }}">
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input type="text" class="form-control" name="name" id="name"
-                                            value="{{ old('name') }}">
+                                            value="{{ old('name', $adminuser->name) }}">
 
                                     </div>
                                 </div>
@@ -47,7 +48,7 @@
                                     <div class="form-group mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text" class="form-control" name="email" id="email"
-                                            value="{{ old('email') }}">
+                                            value="{{ old('email', $adminuser->email) }}">
 
                                     </div>
                                 </div>
@@ -55,15 +56,7 @@
                                     <div class="form-group mb-3">
                                         <label for="phone" class="form-label">Phone</label>
                                         <input type="text" class="form-control" name="phone" id="phone"
-                                            value="{{ old('phone') }}">
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" name="password" id="password"
-                                            value="{{ old('password') }}">
+                                            value="{{ old('phone', $adminuser->phone) }}">
 
                                     </div>
                                 </div>
@@ -75,7 +68,13 @@
                                             <option disabled selected>-- Select --</option>
 
                                             @foreach ($roles as $role)
+                                            @if ($role->name == $adminuser->hasRole($role->name))
+
+                                            <option value="{{ $role->id }}" selected>{{ $role->name }}</option>
+                                            @else
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
+
+                                            @endif
                                             @endforeach
 
                                         </select>
@@ -85,13 +84,9 @@
 
                             </div>
 
-
-
-
-
                             <div class="text-end">
                                 <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i
-                                        class="mdi mdi-content-save"></i> Save</button>
+                                        class="mdi mdi-content-save"></i> Update</button>
                             </div>
                         </form>
                     </div>
