@@ -25,10 +25,11 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
 
-
+                        @if (Auth::user()->can('add.supplier'))
                         <a href="{{ route('add.supplier') }}"
                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                 class="mdi mdi-plus me-1"></i> Add Supplier</a>
+                        @endif
 
                     </div>
                     <h4 class="page-title"><i class="mdi mdi-truck-fast me-1"></i> All Supplier</h4>
@@ -71,21 +72,29 @@
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td class="text-center" id="tooltip-container">
+
+                                        @if (Auth::user()->can('edit.supplier'))
                                         <a href="{{ route('edit.supplier', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"
                                             data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
                                             data-bs-placement="bottom" title="Edit"><i class="fas fa-pen"></i> </a>
                                         &nbsp;
+                                        @endif
+
                                         <a href="{{ route('detail.supplier', $item->id) }}"
                                             class="btn btn-info rounded-pill waves-effect waves-light"
                                             data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
                                             data-bs-placement="bottom" title="Detail"><i class="fas fa-eye"></i> </a>
                                         &nbsp;
+
+                                        @if (Auth::user()->can('delete.supplier'))
                                         <a href="{{ route('delete.supplier', $item->id) }}"
                                             class="btn btn-danger rounded-pill waves-effect waves-light"
                                             data-bs-container="#tooltip-container" data-bs-toggle="tooltip"
                                             data-bs-placement="bottom" id="delete" title="Delete"><i
                                                 class="fas fa-trash-alt"></i> </a>
+                                        @endif
+
                                     </td>
                                 </tr><i @endforeach </tbody>
                         </table>

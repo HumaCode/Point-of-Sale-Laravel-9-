@@ -25,10 +25,11 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
 
-
+                        @if (Auth::user()->can('add.employee'))
                         <a href="{{ route('add.employee') }}"
                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                 class="mdi mdi-plus me-1"></i> Add Employee</a>
+                        @endif
 
                     </div>
                     <h4 class="page-title"><i class="mdi mdi-file-table-box me-1"></i> All Employee</h4>
