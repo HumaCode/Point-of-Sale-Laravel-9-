@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -199,5 +201,15 @@ class AdminController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+
+    /////////////////////////  DATABASE BACKUP ///////////////////////////
+
+    public function databaseBackup()
+    {
+        $title      = "Backup Database";
+
+        return view('admin.db_backup', compact('title'))->with('files', File::allFiles(storage_path('/app/Point-of-Sale')));
     }
 }

@@ -331,21 +331,15 @@
                 @endif
 
                 <li>
-                    <a href="#sidebarExpages" data-bs-toggle="collapse">
+                    <a href="#sidebarBackup" data-bs-toggle="collapse">
                         <i class="mdi mdi-text-box-multiple-outline"></i>
-                        <span> Extra Pages </span>
+                        <span> Database Backup </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarExpages">
+                    <div class="collapse" id="sidebarBackup">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="pages-starter.html">Starter</a>
-                            </li>
-                            <li>
-                                <a href="pages-timeline.html">Timeline</a>
-                            </li>
-                            <li>
-                                <a href="pages-sitemap.html">Sitemap</a>
+                                <a href="{{ route('database.backup') }}">Database Backup</a>
                             </li>
                         </ul>
                     </div>

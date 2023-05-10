@@ -215,6 +215,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/edit/admin/{id}', 'editAdmin')->name('edit.admin');
         Route::post('/update/admin', 'updateAdmin')->name('admin.update');
         Route::get('/delete/admin/{id}', 'deleteAdmin')->name('delete.admin');
+
+
+        // database backup
+        Route::get('/database/backup', 'databaseBackup')->name('database.backup');
     });
 });
 
