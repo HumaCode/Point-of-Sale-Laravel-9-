@@ -71,12 +71,20 @@
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->shopname }}</td>
                                     <td class="text-center">
+
+                                        @if (Auth::user()->can('edit.customer'))
                                         <a href="{{ route('edit.customer', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
+                                        @endif
+
+                                        @if (Auth::user()->can('delete.customer'))
                                         <a href="{{ route('delete.customer', $item->id) }}"
                                             class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
                                                 class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                        @endif
+
+
                                     </td>
                                 </tr><i @endforeach </tbody>
                         </table>

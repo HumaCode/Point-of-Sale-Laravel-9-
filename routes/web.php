@@ -35,9 +35,10 @@ Route::get('/dashboard', function () {
     return view('index', compact('title'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/logout', [AdminController::class, 'adminLogoutPage'])->name('admin.logout.page');
+
 Route::middleware('auth')->group(function () {
     Route::get('/admin/logout', [AdminController::class, 'adminDestroy'])->name('admin.logout');
-    Route::get('/logout', [AdminController::class, 'adminLogoutPage'])->name('admin.logout.page');
 
     // profil
     Route::get('/admin/profile', [AdminController::class, 'adminProfile'])->name('admin.profile');

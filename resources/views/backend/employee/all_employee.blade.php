@@ -53,6 +53,7 @@
                                     <th>Phone</th>
                                     <th>Salary</th>
                                     <th class="text-center">Action</th>
+
                                 </tr>
                             </thead>
 
@@ -71,12 +72,21 @@
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->salary }}</td>
                                     <td class="text-center">
+
+                                        {{-- permission --}}
+                                        @if (Auth::user()->can('edit.employee'))
+
                                         <a href="{{ route('edit.employee', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-pencil me-1"></i> Edit</a> &nbsp;
+                                        @endif
+
+                                        @if (Auth::user()->can('delete.employee'))
                                         <a href="{{ route('delete.employee', $item->id) }}"
                                             class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
                                                 class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                        @endif
+
                                     </td>
                                 </tr><i @endforeach </tbody>
                         </table>
