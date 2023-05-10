@@ -25,9 +25,9 @@
                 <div class="page-title-box">
                     <div class="page-title-right">
 
-                        <a href="{{ route('add.employee') }}"
+                        <a href="{{ url('backup/now') }}"
                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
-                                class="mdi mdi-plus me-1"></i> Backup Now</a>
+                                class="mdi mdi-download me-1"></i> Backup Now</a>
 
                     </div>
                     <h4 class="page-title"><i class="mdi mdi-file-table-box me-1"></i> {{ $title }}</h4>
@@ -66,7 +66,8 @@
                                     <td>{{ $item->getPath() }}</td>
                                     <td class="text-center">
 
-                                        <a href="" class="btn btn-primary rounded-pill waves-effect waves-light"><i
+                                        <a href="{{ url($item->getFileName()) }}"
+                                            class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-download me-1"></i> Download</a> &nbsp;
 
 

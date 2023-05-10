@@ -212,4 +212,23 @@ class AdminController extends Controller
 
         return view('admin.db_backup', compact('title'))->with('files', File::allFiles(storage_path('/app/Point-of-Sale')));
     }
+
+    public function backupNow()
+    {
+        \Artisan::call('backup:run');
+
+        $notification = array(
+            'message'       => 'Database Backup Successfull',
+            'alert-type'    => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function downloadDatabase($getFileName)
+    {
+        $path = storage_path('app\Point-of-Sale/' . $getFileName);
+
+        return response()->download($path);
+    }
 }
