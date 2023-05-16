@@ -66,13 +66,14 @@
                                     <td>{{ $item->getPath() }}</td>
                                     <td class="text-center">
 
-                                        <a href="{{ url($item->getFileName()) }}"
+                                        <a href="{{ url('download/' .$item->getFilename()) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-download me-1"></i> Download</a> &nbsp;
 
 
-                                        <a href="" class="btn btn-danger rounded-pill waves-effect waves-light"
-                                            id="delete"><i class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
+                                        <a href="{{ url('delete/database/' . $item->getFilename()) }}"
+                                            class="btn btn-danger rounded-pill waves-effect waves-light" id="delete"><i
+                                                class="mdi mdi-trash-can-outline me-1"></i> Delete</a>
 
 
                                     </td>

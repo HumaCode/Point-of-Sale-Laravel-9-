@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use File;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -215,7 +216,7 @@ class AdminController extends Controller
 
     public function backupNow()
     {
-        \Artisan::call('backup:run');
+        Artisan::queue('backup:run');
 
         $notification = array(
             'message'       => 'Database Backup Successfull',
@@ -230,5 +231,17 @@ class AdminController extends Controller
         $path = storage_path('app\Point-of-Sale/' . $getFileName);
 
         return response()->download($path);
+    }
+
+    public function deleteDatabase($getFileName)
+    {
+        Storage::delete('Point-of-Sale/' . $getFileName);
+
+        $notification = array(
+            'message'       => 'Delete Database Backup Successfull',
+            'alert-type'    => 'success',
+        );
+
+        return redirect()->back()->with($notification);
     }
 }

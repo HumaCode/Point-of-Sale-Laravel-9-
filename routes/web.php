@@ -220,7 +220,8 @@ Route::middleware('auth')->group(function () {
         // database backup
         Route::get('/database/backup', 'databaseBackup')->name('database.backup');
         Route::get('/backup/now', 'backupNow');
-        Route::get('{getFileName}', 'downloadDatabase');
+        Route::get('download/{getFilename}', 'downloadDatabase');
+        Route::get('delete/database/{getFileName}', 'deleteDatabase');
     });
 });
 
