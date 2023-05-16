@@ -137,4 +137,13 @@ class OrderController extends Controller
         ]);
         return $pdf->download('invoice.pdf');
     }
+
+    public function pendingDue()
+    {
+        $alldue = Order::where('due', '>', '0')->orderBy('id', 'DESC')->get();
+        $title      = "Pending Due";
+
+
+        return view('backend.order.pending_due', compact('alldue', 'title'));
+    }
 }

@@ -170,6 +170,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/stock', 'stockManage')->name('stock.manage');
         Route::get('/order/invoice-download/{order_id}', 'orderInvoice');
+
+
+        Route::get('/pending/due', 'pendingDue')->name('pending.due');
     });
 
 
