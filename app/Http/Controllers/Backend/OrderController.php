@@ -16,6 +16,18 @@ class OrderController extends Controller
 {
     public function finalInvoice(Request $request)
     {
+
+        $rtotal = $request->total;
+        $rpay = $request->pay;
+        $mtotal = $rpay - $rtotal;
+
+        // return  is_numeric($request->total);
+        // return  $rtotal;
+        // return  $mtotal;
+        // return $rpay;
+        // return $rtotal;
+        // return is_numeric($rpay);
+
         $data                   = array();
         $data['customer_id']    = $request->customer_id;
         $data['order_date']     = $request->order_date;
@@ -28,7 +40,7 @@ class OrderController extends Controller
         $data['payment_status'] = $request->payment_status;
         $data['total']          = $request->total;
         $data['pay']            = $request->pay;
-        $data['due']            = $request->due;
+        $data['due']            = $mtotal;
         $data['created_at']     = Carbon::now();
 
         $order_id               = Order::insertGetId($data);

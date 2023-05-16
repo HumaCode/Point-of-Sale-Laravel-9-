@@ -209,11 +209,7 @@ return number_format($angka, 0, ',', '.');
                         <input class="form-control" type="text" name="pay" id="pay" required="" placeholder="Pay Now">
                     </div>
 
-                    <div class="mb-3">
-                        <label for="due" class="form-label">Due Amount</label>
-                        <input class="form-control" type="text" name="due" id="due" required=""
-                            placeholder="Due Amount">
-                    </div>
+
 
 
                     <div class="mb-3 text-center">
