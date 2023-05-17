@@ -11,6 +11,9 @@
 <link href="{{ asset('backend') }}/assets/libs/datatables.net-select-bs5/css//select.bootstrap5.min.css"
     rel="stylesheet" type="text/css" />
 <!-- third party css end -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
 @endpush
 
 @section('admin')
@@ -74,6 +77,11 @@
                                         <a href="{{ route('order.detail', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"><i
                                                 class="mdi mdi-eye me-1"></i> Detail</a>
+
+                                        <button type="button" class="btn btn-info rounded-pill waves-effect waves-light"
+                                            data-bs-toggle="modal" data-bs-target="#signup-modal" id="{{ $item->id }}"
+                                            onclick="orderDue(this.id)"><i class="mdi mdi-barcode me-1"></i>
+                                            Pay Due</button>
                                     </td>
                                 </tr><i @endforeach </tbody>
                         </table>
@@ -87,6 +95,41 @@
     </div>
 </div>
 
+
+<div id="signup-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div class="text-center mt-2 mb-4">
+                    <div class="auth-logo">
+                        <h3> Pay Due Amount</h3>
+                    </div>
+                </div>
+
+                <form class="px-3" action="{{ url('/final-invoice') }}" method="post">
+                    @csrf
+
+
+
+                    <div class="mb-3">
+                        <label for="due" class="form-label">Pay Now</label>
+                        <input class="form-control" type="text" name="due" id="due" required="" placeholder="Due">
+                    </div>
+
+
+
+
+                    <div class="mb-3 text-center">
+                        <button class="btn btn-primary" type="submit">Update Due</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 @push('scripts')
@@ -113,5 +156,20 @@
 
 <!-- Datatables init -->
 <script src="{{ asset('backend') }}/assets/js/pages/datatables.init.js"></script>
+
+
+<script>
+    function orderDue(id) {
+        $.ajax({
+            type: 'GET',
+            url: '/order/due/'+id,
+            dataType: 'json',
+            success: function(data){
+                // console.log(data)
+                $('#due').val(data.due);
+            }
+        })
+    }
+</script>
 @endpush
 @endsection
