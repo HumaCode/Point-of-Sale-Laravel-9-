@@ -16,12 +16,6 @@
 <!-- third party css end -->
 @endpush
 
-@php
-function format_uang($angka)
-{
-return number_format($angka, 0, ',', '.');
-}
-@endphp
 
 <!-- Start Content-->
 <div class="container-fluid">

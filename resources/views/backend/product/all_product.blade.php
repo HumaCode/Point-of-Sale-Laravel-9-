@@ -13,13 +13,6 @@
 <!-- third party css end -->
 @endpush
 
-@php
-function format_uang($angka)
-{
-return number_format($angka, 0, ',', '.');
-}
-@endphp
-
 @section('admin')
 
 <div class="content">
@@ -65,6 +58,7 @@ return number_format($angka, 0, ',', '.');
                                     <th>Supplier</th>
                                     <th>Code</th>
                                     <th>Price</th>
+                                    <th>Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -85,6 +79,14 @@ return number_format($angka, 0, ',', '.');
                                     <td>{{ $item->supplier->name }}</td>
                                     <td>{{ $item->product_code }}</td>
                                     <td>Rp. {{ format_uang($item->selling_price) }}</td>
+                                    <td>
+                                        @if ($item->expire_date >= Carbon\Carbon::now()->format('Y-m-d'))
+                                        <span class="badge bg-success">Valid</span>
+                                        @else
+                                        <span class="badge bg-danger">Invalid</span>
+
+                                        @endif
+                                    </td>
                                     <td class="text-center " id="tooltip-container">
                                         <a href="{{ route('edit.product', $item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"
