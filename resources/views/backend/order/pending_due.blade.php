@@ -50,6 +50,7 @@
                                     <th>Order Date</th>
                                     <th>Payment</th>
                                     <th>Invoice</th>
+                                    <th>Total</th>
                                     <th>Pay</th>
                                     <th>Due</th>
                                     <th class="text-center">Action</th>
@@ -71,6 +72,7 @@
                                     <td>{{ $item->order_date }}</td>
                                     <td>{{ $item->payment_status }}</td>
                                     <td>{{ $item->invoice_no }}</td>
+                                    <td><span class="badge bg-info">{{ $item->total }}</span></td>
                                     <td><span class="badge bg-warning">{{ round($item->pay) }}</span></td>
                                     <td><span class="badge bg-danger">{{ round($item->due) }}</span></td>
                                     <td class="text-center">
@@ -107,10 +109,11 @@
                     </div>
                 </div>
 
-                <form class="px-3" action="{{ url('/final-invoice') }}" method="post">
+                <form class="px-3" action="{{ route('update.due') }}" method="post">
                     @csrf
 
-
+                    <input type="hidden" id="order_id" name="id">
+                    <input type="hidden" id="pay" name="pay">
 
                     <div class="mb-3">
                         <label for="due" class="form-label">Pay Now</label>
@@ -165,8 +168,10 @@
             url: '/order/due/'+id,
             dataType: 'json',
             success: function(data){
-                // console.log(data)
+                console.log(data)
                 $('#due').val(data.due);
+                $('#pay').val(data.pay);
+                $('#order_id').val(data.id);
             }
         })
     }

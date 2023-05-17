@@ -19,7 +19,7 @@ class OrderController extends Controller
 
         $rtotal = $request->total;
         $rpay = $request->pay;
-        $mtotal = $rpay - $rtotal;
+        $mtotal = $rtotal - $rpay;
 
         // return  is_numeric($request->total);
         // return  $rtotal;
@@ -151,5 +151,32 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
         return response()->json($order);
+    }
+
+    public function updateDue(Request $request)
+    {
+        $order_id = $request->id;
+        $due_amount = $request->due;
+        $pay_amount = $request->pay;
+
+        $allorder = Order::findOrFail($order_id);
+
+        $maindue = $allorder->due;
+        $mainpay = $allorder->pay;
+
+        $paid_due = $maindue - $due_amount;
+        $paid_pay = $mainpay - $due_amount;
+
+        Order::findOrFail($order_id)->update([
+            'due' => $paid_due,
+            'pay' => $paid_pay,
+        ]);
+
+        $notification = array(
+            'message'       => 'Due Amount Updated Completed',
+            'alert-type'    => 'success',
+        );
+
+        return redirect()->route('pending.due')->with($notification);
     }
 }

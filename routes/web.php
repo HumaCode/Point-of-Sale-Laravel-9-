@@ -174,6 +174,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/pending/due', 'pendingDue')->name('pending.due');
         Route::get('/order/due/{id}', 'orderDueAjax');
+        Route::post('/update/due', 'updateDue')->name('update.due');
     });
 
 
